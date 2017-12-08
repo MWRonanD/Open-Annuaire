@@ -15,4 +15,5 @@ export class FirmApiService {
   getCompanies(): Observable<FirmApiInterface> {
     return this.http.get(this.firmUrl).map(response => response as FirmApiInterface);
   }
+
 }
