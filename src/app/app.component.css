@@ -20,3 +20,7 @@ nav.navbar.navbar-default{
 .filter{
   background-color: whitesmoke;
 }
+
+td {
+  font-size: 11px;
+}

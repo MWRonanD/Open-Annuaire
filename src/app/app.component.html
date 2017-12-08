@@ -1,73 +1,41 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <div class="row">
-        <div class="col-md-5">
-          <a class="navbar-brand" href="">openannuaire.fr</a>
-        </div>
-        <div class="col-md-5">
-          <input class="form-control" type="text">
-        </div>
-        <div class="col-md-2">
-          <span class="glyphicon glyphicon-question-sign" aria-hidden="true">aide</span>
+        <div class="row">
+          <div class="col-md-5">
+            <a class="navbar-brand" href="">openannuaire.fr</a>
+          </div>
+          <div class="col-md-5">
+            <app-search-box></app-search-box>
+          </div>
+          <div class="col-md-2">
+            <span class="glyphicon glyphicon-question-sign" aria-hidden="true">aide</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </nav>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Tableau</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Carte</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Export des données</a>
+  </li>
+
+</ul>
 
 <br>
 <br>
 <br>
 
 <div class="row">
-<app-menu-filter class="col-md-2"></app-menu-filter>
-  <div class="col-md-9">
-    <table class="table">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Identifiant de l'entreprise</th>
-        <th scope="col">Numéro interne de classement</th>
-        <th scope="col">Première ligne de l'adressage</th>
-        <th scope="col">Deuxième ligne de l'adressage</th>
-        <th scope="col">Troisième ligne de l'adressage</th>
-        <th scope="col">Catégorie d'entreprise</th>
-        <th scope="col">Effectif</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>5618954515</td>
-        <td>3 rue du la pierre</td>
-        <td>-</td>
-        <td>-</td>
-        <td>SSI</td>
-        <td>9</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jacob</td>
-        <td>5618954515</td>
-        <td>5 rue du four</td>
-        <td>-</td>
-        <td>-</td>
-        <td>DSI</td>
-        <td>5</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Larry</td>
-        <td>5618954515</td>
-        <td>impasse des lieu</td>
-        <td>1 square du four</td>
-        <td>4 rue du four</td>
-        <td>MAO</td>
-        <td>498</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+
+  <app-menu-filter class="col-md-2"></app-menu-filter>
+  <app-table-firm class="col-md-9"></app-table-firm>
+
 </div>
