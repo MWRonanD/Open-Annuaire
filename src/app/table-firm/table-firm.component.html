@@ -1,3 +1,33 @@
-<p>
-  table-firm works!
-</p>
+  <table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+      <td> id </td>
+      <td> SIRET </td>
+      <td> name best </td>
+      <td> Form légale </td>
+      <td> adresse </td>
+      <td> code postal </td>
+      <td> Ville </td>
+      <td> Numéro VAT </td>
+      <td> capital </td>
+      <td> administration </td>
+      <td> créer le </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let company of companies">
+      <td> {{ company.id }} </td>
+      <td> {{ company.siren }} </td>
+      <td> {{ company.names.best }} </td>
+      <td> {{ company.legal_form }} </td>
+      <td> {{ company.address }} </td>
+      <td> {{ company.postal_code }} </td>
+      <td> {{ company.city }} </td>
+      <td> {{ company.vat_number }} </td>
+      <td> {{ company.capital }} </td>
+      <td> {{ company.administration }} </td>
+      <td> {{ company.established_on| date:"dd/MM/yyyy"  }}</td>
+    </tr>
+    </tbody>
+  </table>
+
