@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {FirmApiService} from '../firm-api.service';
+import {Filter} from '../Filter';
 
 @Component({
   selector: 'app-menu-filter',
   templateUrl: './menu-filter.component.html',
   styleUrls: ['./menu-filter.component.css']
 })
-export class MenuFilterComponent implements OnInit {
+export class MenuFilterComponent {
+  department: string;
+  filters: Filter;
+  constructor(private firmApiService: FirmApiService) {
+  }
 
-  constructor(private firmApiService: FirmApiService) { }
-
-  ngOnInit() {
+  addFilterDepartment() {
+    this.filters.department.push(this.department);
   }
 
 }

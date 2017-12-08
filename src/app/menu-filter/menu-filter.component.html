@@ -6,6 +6,11 @@
     <h4>Catégorie d'entreprise</h4>
     <hr>
     <p>Département</p>
+
+    <mat-form-field>
+      <input name="departmentFilter" type="text" placeholder="Ajouter un département..." ([ngModel])="department"/>
+    </mat-form-field>
+    <button (click)="addFilterDepartment()">Ajouter</button>
     <hr>
     <h4>Commune</h4>
     <hr>
