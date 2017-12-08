@@ -1,0 +1,22 @@
+h1{
+  color: darkblue;
+}
+
+.filter h4 {
+  color: dimgrey;
+  font-size: 15px;
+  margin-left: 25px;
+}
+
+.filter h3{
+  margin-left: 15px;
+  color: darkblue;
+}
+
+nav.navbar.navbar-default{
+  background-color: whitesmoke;
+}
+
+.filter{
+  background-color: whitesmoke;
+}
