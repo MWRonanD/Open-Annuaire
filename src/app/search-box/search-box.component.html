@@ -1,3 +1,6 @@
- <mat-form-field >
-    <input matInput placeholder="Name">
+<form #searchFirmForm="ngForm">
+  <mat-form-field >
+      <input (change)="searchCompany(companyName)" type="text" [(ngModel)]="companyName" name="companyName" matInput placeholder="Nom de l'entreprise">
   </mat-form-field>
+</form>
+

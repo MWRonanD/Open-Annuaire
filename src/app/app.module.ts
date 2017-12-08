@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import {TableFirmComponent} from './table-firm/table-firm.component';
@@ -19,6 +20,7 @@ import {MatInputModule} from '@angular/material/input';
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
