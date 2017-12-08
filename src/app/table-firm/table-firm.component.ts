@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {FirmApiService} from "../firm-api.service";
+import {Company} from "../Company";
 
 @Component({
   selector: 'app-table-firm',
@@ -8,9 +10,15 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class TableFirmComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  companies: Company[];
+
+  constructor(private firmApiService: FirmApiService) {
+  }
 
   ngOnInit() {
+    this.firmApiService.getCompanies().subscribe(
+      (data) => this.companies = data.companies
+    );
   }
 
 }
