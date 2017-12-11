@@ -34,7 +34,7 @@
 
 <div class="row">
 
-  <app-menu-filter (onNewFilter)="transformFilter($event)" class="col-md-2"></app-menu-filter>
-  <app-table-firm [filters]="filters" class="col-md-9"></app-table-firm>
+  <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" class="col-md-2"></app-menu-filter>
+  <app-table-firm [companies]="companies" class="col-md-9"></app-table-firm>
 
 </div>

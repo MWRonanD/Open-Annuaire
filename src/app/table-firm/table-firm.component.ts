@@ -10,14 +10,12 @@ import {Filter} from '../Filter';
   styleUrls: ['./table-firm.component.css']
 })
 export class TableFirmComponent implements OnInit {
-  @Input() filters: Filter;
-  companies: Company[];
+  @Input() companies: Company[];
 
   constructor(private firmApiService: FirmApiService) {
   }
 
   ngOnInit() {
-    console.log(this.filters);
     this.firmApiService.getCompanies().subscribe(
       (data) => this.companies = data.companies
     );

@@ -16,9 +16,8 @@ export class FirmApiService {
     return this.http.get(this.firmUrl).map(response => response as FirmApiInterface);
   }
 
-  getCompaniesBy(key: string, values: string[])
-  {
-
+  getCompaniesBy(key: string, values: string) {
+    return this.http.get(this.firmUrl + '?' + key + '=' + values).map(response => response as FirmApiInterface);
   }
 
 }

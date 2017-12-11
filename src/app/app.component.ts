@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
 
   filters: Filter;
   companies: Company[];
-  title = 'app';
 
   ngOnInit() {
     this.firmApiService.getCompanies().subscribe(
@@ -25,7 +24,10 @@ export class AppComponent implements OnInit {
     );
   }
 
-  transformFilter(filter: Filter) {
+  convertFilterToCompany(filter: Filter) {
     this.filters = filter;
+    this.firmApiService.getCompaniesBy('department', this.filters.department[0]).subscribe(
+      (data) => this.companies = data.companies
+    );
   }
 }
