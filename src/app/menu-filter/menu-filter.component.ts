@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FirmApiService} from '../firm-api.service';
 import {Filter} from '../Filter';
 
@@ -7,14 +7,22 @@ import {Filter} from '../Filter';
   templateUrl: './menu-filter.component.html',
   styleUrls: ['./menu-filter.component.css']
 })
-export class MenuFilterComponent {
-  department: string;
-  filters: Filter;
+export class MenuFilterComponent implements OnInit {
+  @Output() onNewFilter = new EventEmitter<Filter>();
+  filters: Filter = {
+    department: []
+  };
+
   constructor(private firmApiService: FirmApiService) {
   }
 
-  addFilterDepartment() {
-    this.filters.department.push(this.department);
+  ngOnInit() {
   }
+
+  addFilterDepartment(department) {
+    this.filters.department.push(department);
+    this.onNewFilter.emit(this.filters);
+  }
+
 
 }

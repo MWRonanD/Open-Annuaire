@@ -1,26 +1,13 @@
   <div class="filter">
     <h3>216 Résultats</h3>
     <hr>
-    <h4>Activité (code APE)</h4>
-    <hr>
-    <h4>Catégorie d'entreprise</h4>
-    <hr>
-    <p>Département</p>
-
+    <h6>Département</h6>
+    <div *ngFor="let department of filters.departments">
+      <p>{{department}}</p>
+    </div>
     <mat-form-field>
-      <input name="departmentFilter" type="text" placeholder="Ajouter un département..." ([ngModel])="department"/>
+      <input #departmentInput (keyup.enter)="addFilterDepartment(departmentInput.value, $event)" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
-    <button (click)="addFilterDepartment()">Ajouter</button>
-    <hr>
-    <h4>Commune</h4>
-    <hr>
-    <h4>Année de création</h4>
     <hr>
     <h4>Status juridique</h4>
-    <hr>
-    <h4>Effectifs</h4>
-    <hr>
-    <h4>Chiffre D'affaires</h4>
-    <hr>
-    <h4>Région</h4>
   </div>
