@@ -16,7 +16,12 @@ export class FirmApiService {
   getCompanies(): Observable<FirmApiInterface> {
     return this.http.get(this.firmUrl).map(response => response as FirmApiInterface);
   }
+
   getCompaniesByName(name: string): Observable<FirmApiInterface> {
     return this.http.get(this.searchByNameUrl + name).map(response => response as FirmApiInterface);
+  }
+
+  getCompaniesBy(key: string, values: string) {
+    return this.http.get(this.firmUrl + '?' + key + '=' + values).map(response => response as FirmApiInterface);
   }
 }

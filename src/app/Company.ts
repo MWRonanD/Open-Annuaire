@@ -1,5 +1,5 @@
 export class Company {
-  id: number;
+  id: string;
   siren: string;
   names?: {
     best: string;

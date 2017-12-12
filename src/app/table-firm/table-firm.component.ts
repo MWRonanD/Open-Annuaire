@@ -1,7 +1,8 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {FirmApiService} from "../firm-api.service";
-import {Company} from "../Company";
+import {FirmApiService} from '../firm-api.service';
+import {Company} from '../Company';
+import {Filter} from '../Filter';
 
 @Component({
   selector: 'app-table-firm',
@@ -20,5 +21,6 @@ export class TableFirmComponent implements OnInit {
     );
 
   }
+
 
 }
