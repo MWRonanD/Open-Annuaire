@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {FirmApiService} from "../firm-api.service";
-import {Company} from "../Company";
+import {FirmApiService} from '../firm-api.service';
+import {Company} from '../Company';
+import {Filter} from '../Filter';
 
 @Component({
   selector: 'app-table-firm',
@@ -9,8 +10,7 @@ import {Company} from "../Company";
   styleUrls: ['./table-firm.component.css']
 })
 export class TableFirmComponent implements OnInit {
-
-  companies: Company[];
+  @Input() companies: Company[];
 
   constructor(private firmApiService: FirmApiService) {
   }
@@ -20,5 +20,6 @@ export class TableFirmComponent implements OnInit {
       (data) => this.companies = data.companies
     );
   }
+
 
 }

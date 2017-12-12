@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FirmApiService} from '../firm-api.service';
+import {Filter} from '../Filter';
 
 @Component({
   selector: 'app-menu-filter',
@@ -7,10 +8,28 @@ import {FirmApiService} from '../firm-api.service';
   styleUrls: ['./menu-filter.component.css']
 })
 export class MenuFilterComponent implements OnInit {
+  @Output() onNewFilter = new EventEmitter<Filter>();
+  filters: Filter = {
+    department: []
+  };
 
-  constructor(private firmApiService: FirmApiService) { }
+  constructor(private firmApiService: FirmApiService) {
+  }
 
   ngOnInit() {
   }
 
+  addFilterDepartment(department) {
+    this.filters.department.push(department);
+    this.onNewFilter.emit(this.filters);
+  }
+
+  removeFilterDepartment(department) {
+    const index = this.filters.department.indexOf(department);
+    this.filters.department.splice(index, 1);
+  }
+
+  countCompanies(value) {
+    this.firmApiService.countCompaniesBy('department', value);
+  }
 }
