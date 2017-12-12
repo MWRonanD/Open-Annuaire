@@ -3,10 +3,10 @@
     <hr>
     <h6>Département</h6>
     <div *ngFor="let department of filters.department">
-      <p>{{department}}</p>
+      <i (click)="removeFilterDepartment(department)" class="material-icons">close</i><span>{{department}}</span><span class="badge badge-primary">{{countCompanies(department)}}</span>
     </div>
     <mat-form-field>
-      <input #departmentInput (keyup.enter)="addFilterDepartment(departmentInput.value, $event)" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
+      <input #departmentInput (keyup.enter)="addFilterDepartment(departmentInput.value, $event); departmentInput.value = ''" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
     <hr>
     <h4>Status juridique</h4>
