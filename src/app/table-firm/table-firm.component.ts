@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FirmApiService} from '../firm-api.service';
 import {Company} from '../Company';
@@ -19,6 +19,7 @@ export class TableFirmComponent implements OnInit {
     this.firmApiService.getCompanies().subscribe(
       (data) => this.companies = data.companies
     );
+
   }
 
 
