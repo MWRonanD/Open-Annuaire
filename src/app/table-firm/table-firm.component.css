@@ -16,4 +16,11 @@ tbody tr:nth-child(odd){
   background-color:white;
 }
 
+mat-row:nth-child(odd){
+  background-color:#efefef;
+}
+mat-header-row{
+  background-color:#d8d8d8;
+}
+
 
