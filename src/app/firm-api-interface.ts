@@ -1,6 +1,6 @@
 import {Company} from './Company';
 
-export interface FirmApiComoaniesInterface {
+export interface FirmApiCompaniesInterface {
   status: string;
   params: {};
   companies: Company[];
