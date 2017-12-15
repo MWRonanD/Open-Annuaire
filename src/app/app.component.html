@@ -6,7 +6,7 @@
             <a class="navbar-brand" href="">openannuaire.fr</a>
           </div>
           <div class="col-md-5">
-            <app-search-box (onSearchCompanyByName)="searchcompanyByName($event)"></app-search-box>
+            <app-search-box (onselectedBy)="selectedBy($event)"  (onSearchCompanyBy)="searchcompanyBy($event)"></app-search-box>
           </div>
           <div class="col-md-2">
             <span class="glyphicon glyphicon-question-sign" aria-hidden="true">aide</span>
@@ -36,6 +36,6 @@
 
 <div class="row">
   <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" class="col-md-2"></app-menu-filter>
-  <app-table-firm [companies]="companies" class="col-md-9"></app-table-firm>
+  <app-table-firm  [companies]="companies" class="col-md-9"></app-table-firm>
 
 </div>
