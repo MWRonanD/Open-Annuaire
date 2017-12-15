@@ -6,7 +6,7 @@
             <a class="navbar-brand" href="">openannuaire.fr</a>
           </div>
           <div class="col-md-5">
-            <app-search-box></app-search-box>
+            <app-search-box (onSearchCompanyByName)="searchcompanyByName($event)"></app-search-box>
           </div>
           <div class="col-md-2">
             <span class="glyphicon glyphicon-question-sign" aria-hidden="true">aide</span>
@@ -15,25 +15,26 @@
       </div>
     </div>
 </nav>
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Tableau</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Carte</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Export des données</a>
-  </li>
-
-</ul>
+<div class="row background-tabs">
+  <span>10 848 086 entreprises au 15/11/2017</span>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Tableau</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Carte</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Export des données</a>
+    </li>
+  </ul>
+</div>
 
 <br>
 <br>
 <br>
 
 <div class="row">
-
   <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" class="col-md-2"></app-menu-filter>
   <app-table-firm [companies]="companies" class="col-md-9"></app-table-firm>
 
