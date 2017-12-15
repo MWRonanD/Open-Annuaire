@@ -1,8 +1,6 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {FirmApiService} from '../firm-api.service';
 import {Company} from '../Company';
-import {Filter} from '../Filter';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 
@@ -12,9 +10,17 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   styleUrls: ['./table-firm.component.css']
 })
 export class TableFirmComponent implements OnInit {
-  @Input() companies: Company[];
+  companies: Company[];
   displayedColumns = ['id', 'siren', 'name', 'address', 'city', 'zipCode'];
   dataSource: MatTableDataSource<Company>;
+
+  @Input() set changeCompanies(companies: Company[]) {
+    this.dataSource = new MatTableDataSource<Company>(companies);
+    console.log(companies);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
