@@ -1,0 +1,19 @@
+.bold{
+  Font-Weight: Bold;
+}
+.light-gray{
+  background-color: #e6e6e6 ;
+}
+
+table{
+  margin: 0 25px 0 25px;
+}
+
+tbody tr:nth-child(even){
+  background-color:#f2f2f2;
+}
+tbody tr:nth-child(odd){
+  background-color:white;
+}
+
+
