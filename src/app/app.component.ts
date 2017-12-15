@@ -15,14 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private firmApiService: FirmApiService) {
   }
 
-  filters: Filter;
   companies: Company[];
-
-  searchcompanyByName(companyName: string) {
-    this.firmApiService.getCompaniesByName(companyName).subscribe(
-      (data) => this.companies = data.companies
-    );
-  }
 
   ngOnInit() {
     this.firmApiService.getCompanies().subscribe(
@@ -31,8 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   convertFilterToCompany(filter: Filter) {
-    this.filters = filter;
-    this.firmApiService.getCompaniesBy('department', this.filters.department[0]).subscribe(
+    this.firmApiService.getCompaniesBy(filter).subscribe(
       (data) => this.companies = data.companies
     );
   }
