@@ -15,26 +15,21 @@ export class AppComponent implements OnInit {
   constructor(private firmApiService: FirmApiService) {
   }
 
-  filters: Filter;
   companies: Company[];
   searchBy = 'name';
 
-  selectedBy(selected) {
-    this.searchBy = selected;
-  }
-  searchcompanyBy(companyArgument: string) {
+  searchcompanyBy(filter: Filter) {
     this.companies = [];
-    if (this.searchBy === 'SIRET') {
-      this.firmApiService.getCompany(companyArgument).subscribe(
+    if (filter.siret !== undefined) {
+      this.firmApiService.getCompany(filter.siret).subscribe(
         (data) => this.companies.push(data.company)
       );
     } else {
-      this.firmApiService.getCompaniesBy('name', companyArgument).subscribe(
+      this.firmApiService.getCompaniesBy(filter).subscribe(
         (data) => this.companies = data.companies
       );
     }
   }
-
   ngOnInit() {
     this.firmApiService.getCompanies().subscribe(
       (response) => this.companies = response.companies
@@ -42,8 +37,7 @@ export class AppComponent implements OnInit {
   }
 
   convertFilterToCompany(filter: Filter) {
-    this.filters = filter;
-    this.firmApiService.getCompaniesBy('department', this.filters.department[0]).subscribe(
+    this.firmApiService.getCompaniesBy(filter).subscribe(
       (data) => this.companies = data.companies
     );
   }
