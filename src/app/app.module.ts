@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import {TableFirmComponent} from './table-firm/table-firm.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
