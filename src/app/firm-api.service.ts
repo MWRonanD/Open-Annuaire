@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {FirmApiInterface} from './firm-api-interface';
+import {FirmApiCompanyInterface, FirmApiComoaniesInterface } from './firm-api-interface';
 
 @Injectable()
 export class FirmApiService {
@@ -11,17 +11,14 @@ export class FirmApiService {
   }
 
   firmUrl = 'https://firmapi.com/api/v1/companies';
-  searchByNameUrl = 'https://firmapi.com/api/v1/companies/?name=';
 
-  getCompanies(): Observable<FirmApiInterface> {
-    return this.http.get(this.firmUrl).map(response => response as FirmApiInterface);
+  getCompanies(): Observable<FirmApiComoaniesInterface > {
+    return this.http.get(this.firmUrl).map(response => response as FirmApiComoaniesInterface );
   }
-
-  getCompaniesByName(name: string): Observable<FirmApiInterface> {
-    return this.http.get(this.searchByNameUrl + name).map(response => response as FirmApiInterface);
+  getCompaniesBy(key: string, value: string) {
+    return this.http.get(this.firmUrl + '?' + key + '=' + value).map(response => response as FirmApiComoaniesInterface );
   }
-
-  getCompaniesBy(key: string, values: string) {
-    return this.http.get(this.firmUrl + '?' + key + '=' + values).map(response => response as FirmApiInterface);
+  getCompany(value: string) {
+    return this.http.get(this.firmUrl + '\/' + value).map(response => response as FirmApiCompanyInterface);
   }
 }
