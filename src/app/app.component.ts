@@ -17,11 +17,22 @@ export class AppComponent implements OnInit {
 
   filters: Filter;
   companies: Company[];
+  searchBy = 'name';
 
-  searchcompanyByName(companyName: string) {
-    this.firmApiService.getCompaniesByName(companyName).subscribe(
-      (data) => this.companies = data.companies
-    );
+  selectedBy(selected) {
+    this.searchBy = selected;
+  }
+  searchcompanyBy(companyArgument: string) {
+    this.companies = [];
+    if (this.searchBy === 'SIRET') {
+      this.firmApiService.getCompany(companyArgument).subscribe(
+        (data) => this.companies.push(data.company)
+      );
+    } else {
+      this.firmApiService.getCompaniesBy('name', companyArgument).subscribe(
+        (data) => this.companies = data.companies
+      );
+    }
   }
 
   ngOnInit() {
