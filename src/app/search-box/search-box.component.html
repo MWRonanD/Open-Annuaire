@@ -3,9 +3,9 @@
       <input (change)="searchCompany( selected, searchBy)" type="text" [(ngModel)]="searchBy" name="searchBy" matInput placeholder=" Recherche par {{selected}}">
   </mat-form-field>
   <mat-form-field>
-    <mat-select [(value)]="selected"  placeholder="Recherche par">
-      <mat-option value="Nom">Nom de l'entreprise</mat-option>
-      <mat-option value="SIRET">N° de SIRET</mat-option>
+    <mat-select  [(value)]="selected"  placeholder="Recherche par">
+      <mat-option value="name">Nom de l'entreprise</mat-option>
+      <mat-option value="siret">N° de SIRET</mat-option>
     </mat-select>
   </mat-form-field>
 </form>
