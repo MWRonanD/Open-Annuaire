@@ -1,13 +1,28 @@
   <div class="filter">
     <h3>216 Résultats</h3>
     <hr>
-    <h6>Département</h6>
-    <div *ngFor="let department of filters.department">
-      <i (click)="removeFilterDepartment(department)" class="material-icons">close</i><span>{{department}}</span><span class="badge badge-primary">{{countCompanies(department)}}</span>
+
+    <h4>Code postal</h4>
+    <div *ngIf="filters.postal_code">
+      <i (click)="removeFilter('postal_code')" class="material-icons">close</i><span>{{filters.postal_code}}</span>
     </div>
-    <mat-form-field>
-      <input #departmentInput (keyup.enter)="addFilterDepartment(departmentInput.value, $event); departmentInput.value = ''" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
+    <mat-form-field *ngIf="filters.postal_code === undefined">
+      <input #postalCodeInput (keyup.enter)="addFilter('postal_code', postalCodeInput.value, $event); postalCodeInput.value = ''" matInput name="postalCodeIFilter" type="text" placeholder="Ajouter un code postal"/>
+    </mat-form-field>
+    <hr>
+    <h6>Département</h6>
+    <div *ngIf="filters.department">
+      <i (click)="removeFilter('department')" class="material-icons">close</i><span>{{filters.department}}</span>
+    </div>
+    <mat-form-field *ngIf="filters.department === undefined">
+      <input #departmentInput (keyup.enter)="addFilter('department',departmentInput.value, $event); departmentInput.value = ''" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
     <hr>
     <h4>Status juridique</h4>
+    <div *ngIf="filters.legal_form">
+      <i (click)="removeFilter('legal_form')" class="material-icons">close</i><span>{{filters.legal_form}}</span>
+    </div>
+    <mat-form-field *ngIf="filters.legal_form === undefined">
+      <input #legalFormInput (keyup.enter)="addFilter('legal_form', legalFormInput.value, $event); legalFormInput.value = ''" matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
+    </mat-form-field>
   </div>

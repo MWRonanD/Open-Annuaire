@@ -10,7 +10,6 @@ import {Filter} from '../Filter';
 export class MenuFilterComponent implements OnInit {
   @Output() onNewFilter = new EventEmitter<Filter>();
   filters: Filter = {
-    department: []
   };
 
   constructor(private firmApiService: FirmApiService) {
@@ -19,13 +18,13 @@ export class MenuFilterComponent implements OnInit {
   ngOnInit() {
   }
 
-  addFilterDepartment(department) {
-    this.filters.department.push(department);
+  addFilter(filter, value) {
+    this.filters[filter] = value;
     this.onNewFilter.emit(this.filters);
   }
 
-  removeFilterDepartment(department) {
-    const index = this.filters.department.indexOf(department);
-    this.filters.department.splice(index, 1);
+  removeFilter(filter) {
+    delete this.filters[filter];
+    this.onNewFilter.emit(this.filters);
   }
 }
