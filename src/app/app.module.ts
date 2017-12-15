@@ -40,4 +40,5 @@ import { SearchBoxComponent } from './search-box/search-box.component';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
