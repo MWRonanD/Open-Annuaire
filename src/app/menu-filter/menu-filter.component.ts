@@ -23,7 +23,6 @@ export class MenuFilterComponent implements OnInit {
     this.onNewFilter.emit(this.filters);
   }
 
-
   removeFilter(filter) {
     delete this.filters[filter];
     this.onNewFilter.emit(this.filters);
