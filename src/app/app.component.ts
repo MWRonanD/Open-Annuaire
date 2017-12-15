@@ -17,12 +17,6 @@ export class AppComponent implements OnInit {
 
   companies: Company[];
 
-  searchcompanyByName(companyName: string) {
-    this.firmApiService.getCompaniesByName(companyName).subscribe(
-      (data) => this.companies = data.companies
-    );
-  }
-
   ngOnInit() {
     this.firmApiService.getCompanies().subscribe(
       (response) => this.companies = response.companies
