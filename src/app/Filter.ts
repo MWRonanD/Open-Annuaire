@@ -3,4 +3,5 @@ export class Filter {
   legal_form?: string;
   postal_code?: string;
   name?: string;
+  siret?: string;
 }
