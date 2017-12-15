@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {FirmApiInterface} from './firm-api-interface';
-import {Company} from './Company';
+import {Filter} from './Filter';
 
 @Injectable()
 export class FirmApiService {
@@ -11,34 +11,19 @@ export class FirmApiService {
   constructor(private http: HttpClient) {
   }
 
-  firmUrl = 'https://firmapi.com/api/v1/companies?limit=1000';
-
   getCompanies(): Observable<FirmApiInterface> {
-    return this.http.get(this.firmUrl).map(response => response as FirmApiInterface);
+    const firmUrl = 'https://firmapi.com/api/v1/companies?limit=1000';
+    return this.http.get(firmUrl).map(response => response as FirmApiInterface);
   }
 
-  getCompaniesBy(key: string, values: string, start_after?: string) {
-    this.firmUrl = this.firmUrl + '&' + key + '=' + values;
-    if (start_after !== undefined) {
-      this.firmUrl = this.firmUrl + '&start_after=' + start_after;
+  getCompaniesBy(filter: Filter) {
+    let firmUrl = 'https://firmapi.com/api/v1/companies?limit=1000';
+    const filterKeys = Object.keys(filter);
+    for (let i = 0; i < filterKeys.length; i++) {
+      firmUrl = firmUrl + '&' + filterKeys[i] + '=' + filter[filterKeys[i]];
     }
-    return this.http.get(this.firmUrl).map(response => response as FirmApiInterface);
-  }
-
-  countCompaniesBy(key: string, values: string) {
-    let count = 0;
-    let companiesLastRequest: Company[];
-    let lastCompanyId: string;
-      if (lastCompanyId === undefined) {
-        this.getCompaniesBy(key, values).subscribe(data => companiesLastRequest = data.companies);
-      } else {
-        this.getCompaniesBy(key, values, lastCompanyId).subscribe(data => companiesLastRequest = data.companies);
-      }
-      lastCompanyId = companiesLastRequest[companiesLastRequest.length - 1].id;
-      count += companiesLastRequest.length;
-      console.log(companiesLastRequest.length);
-
-    return count;
+    console.log(firmUrl);
+    return this.http.get(firmUrl).map(response => response as FirmApiInterface);
   }
 
 }
