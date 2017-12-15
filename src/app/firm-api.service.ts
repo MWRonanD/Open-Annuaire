@@ -11,8 +11,9 @@ export class FirmApiService {
   constructor(private http: HttpClient) {
   }
   getCompany(value: string) {
-    const firmUrl = 'https://firmapi.com/api/v1/companies';
-    return this.http.get(firmUrl + '\/' + value).map(response => response as FirmApiCompanyInterface);
+    let firmUrl = 'https://firmapi.com/api/v1/companies';
+    firmUrl = firmUrl + '\/' + value;
+    return this.http.get(firmUrl).map(response => response as FirmApiCompanyInterface);
   }
   getCompanies(): Observable<FirmApiCompaniesInterface> {
     const firmUrl = 'https://firmapi.com/api/v1/companies?limit=1000';

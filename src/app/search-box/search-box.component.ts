@@ -9,7 +9,6 @@ import {Filter} from '../Filter';
 })
 export class SearchBoxComponent implements OnInit {
   @Output() onSearchCompanyBy = new EventEmitter<Filter>();
-  selected = 'name';
   filter: Filter = {} ;
 
   constructor() {

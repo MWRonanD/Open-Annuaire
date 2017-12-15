@@ -16,9 +16,8 @@ export class AppComponent implements OnInit {
   }
 
   companies: Company[];
-  searchBy = 'name';
 
-  searchcompanyBy(filter: Filter) {
+  searchCompanyBy(filter: Filter) {
     this.companies = [];
     if (filter.siret !== undefined) {
       this.firmApiService.getCompany(filter.siret).subscribe(
