@@ -1,28 +1,41 @@
-<table class="table table-striped">
-  <thead class="light-gray">
-    <tr class="bold">
-      <td> id </td>
-      <td> SIRET </td>
-      <td> Nom </td>
-      <td> Forme juridique </td>
-      <td> adresse </td>
-      <td> code postal </td>
-      <td> Ville </td>
-      <td> capital </td>
-      <td> créer le </td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let company of companies">
-      <td> {{ company.id }} </td>
-      <td> {{ company.siren }} </td>
-      <td> {{ company.names.best }} </td>
-      <td> {{ company.legal_form }} </td>
-      <td> {{ company.address }} </td>
-      <td> {{ company.postal_code }} </td>
-      <td> {{ company.city }} </td>
-      <td> {{ company.capital }} </td>
-      <td> {{ company.established_on| date:"dd/MM/yyyy"  }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class=" mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>id</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="siren">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Numéro de Siret</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.siren }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom de l'entreprise</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.names.best }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Addresse</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.address }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Ville</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.city }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="zipCode">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Code postal</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.postal_code }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
+

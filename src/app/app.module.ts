@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatSelectModule, MatInputModule } from '@angular/material';
+import {MatButtonModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule, MatSelectModule} from '@angular/material';
 import { AppComponent } from './app.component';
 import {TableFirmComponent} from './table-firm/table-firm.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
-
 
 
 @NgModule({
@@ -26,8 +25,12 @@ import { SearchBoxComponent } from './search-box/search-box.component';
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
