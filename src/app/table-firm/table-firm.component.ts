@@ -1,7 +1,8 @@
-import {Component, OnInit, Input, ViewChild} from '@angular/core';
-import {FirmApiService} from '../firm-api.service';
+import {Component, Input, ViewChild} from '@angular/core';
 import {Company} from '../Company';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {SendCompanyService} from '../send-company.service';
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -9,36 +10,20 @@ import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
   templateUrl: './table-firm.component.html',
   styleUrls: ['./table-firm.component.css']
 })
-export class TableFirmComponent implements OnInit {
-  companies: Company[];
+export class TableFirmComponent {
+  subscription: Subscription;
   displayedColumns = ['id', 'siren', 'name', 'address', 'city', 'zipCode'];
   dataSource: MatTableDataSource<Company>;
-
-  @Input() set changeCompanies(companies: Company[]) {
-    this.dataSource = new MatTableDataSource<Company>(companies);
-    console.log(companies);
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private firmApiService: FirmApiService) {
+  constructor(private sendCompanyService: SendCompanyService) {
+    this.subscription = this.sendCompanyService.getCompanies().subscribe(data => {
+      this.dataSource = new MatTableDataSource<Company>(data);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+    });
   }
-
-  ngOnInit() {
-    this.firmApiService.getCompanies().subscribe(
-      (data) => {
-        this.companies = data.companies;
-        this.dataSource = new MatTableDataSource<Company>(this.companies);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      }
-    );
-
-  }
-
 
 }
