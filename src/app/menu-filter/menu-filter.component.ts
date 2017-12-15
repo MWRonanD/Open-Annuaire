@@ -28,8 +28,4 @@ export class MenuFilterComponent implements OnInit {
     const index = this.filters.department.indexOf(department);
     this.filters.department.splice(index, 1);
   }
-
-  countCompanies(value) {
-    this.firmApiService.countCompaniesBy('department', value);
-  }
 }
