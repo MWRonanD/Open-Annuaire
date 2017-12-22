@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Subject} from 'rxjs/Subject';
-import {Company} from './Company';
+import {Company} from './Model/Company';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
