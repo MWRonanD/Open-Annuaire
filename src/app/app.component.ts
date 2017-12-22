@@ -19,15 +19,9 @@ export class AppComponent implements OnInit {
 
   companies: Company[];
 
-  searchCompanyBy(filter: Filter) {
+  searchCompanyBy(value: string) {
     this.companies = [];
-   /* if (filter.siret !== undefined) {
-      this.firmApiService.getCompany(filter.siret).subscribe((data) => {
-        this.sendCompanyService.sendCompany(data.company);
-        this.companies.push(data.company);
-      });
-    } else { */
-      this.firmApiService.getCompaniesBy(filter).subscribe((data) => {
+      this.firmApiService.searchCompanies(value).subscribe((data) => {
         for (let i = 0; i < data.records.length; i++) {
           const company = new Company(
             data.records[i].fields.siret,
@@ -44,9 +38,9 @@ export class AppComponent implements OnInit {
             data.records[i].fields.libreg_new,
             data.records[i].fields.coordonnees);
           this.companies.push(company);
+          this.sendCompanyService.sendCompanies(this.companies);
         }
       });
-/*    }*/
   }
 
   ngOnInit() {
