@@ -37,6 +37,11 @@
 <br>
 
 <div class="row">
+<<<<<<< HEAD
   <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" class="col-md-2"></app-menu-filter>
   <router-outlet></router-outlet>
+=======
+<app-menu-filter (onNewFilter)="convertFilterToCompany($event);generateUrl($event)" class="col-md-2"></app-menu-filter>
+  <router-outlet ></router-outlet>
+>>>>>>> fix maps searsh with filter
 </div>
