@@ -8,8 +8,8 @@ import {Filter} from '../Model/Filter';
   styleUrls: ['./search-box.component.css']
 })
 export class SearchBoxComponent implements OnInit {
-  @Output() onSearchCompanyBy = new EventEmitter<Filter>();
-  filter: Filter = {} ;
+  @Output() onSearchCompanyBy = new EventEmitter<string>();
+  filter: Filter = {};
 
   constructor() {
   }
@@ -17,10 +17,8 @@ export class SearchBoxComponent implements OnInit {
   ngOnInit() {
   }
 
-  searchCompany(selected, value) {
-    this.filter = new Filter;
-    this.filter[selected] = value;
-    this.onSearchCompanyBy.emit(this.filter);
+  searchCompany(value) {
+    this.onSearchCompanyBy.emit(value);
   }
 
 }

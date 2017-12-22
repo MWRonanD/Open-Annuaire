@@ -2,18 +2,13 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {FirmApiCompanyInterface, FirmApiCompaniesInterface } from './firm-api-interface';
+import {FirmApiCompanyInterface, FirmApiCompaniesInterface} from './firm-api-interface';
 import {Filter} from './Model/Filter';
 
 @Injectable()
 export class FirmApiService {
 
   constructor(private http: HttpClient) {
-  }
-  getCompany(value: string) {
-    let firmUrl = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene';
-    firmUrl = firmUrl + '\/' + value;
-    return this.http.get(firmUrl).map(response => response as FirmApiCompanyInterface);
   }
   getCompanies(): Observable<FirmApiCompaniesInterface> {
     const firmUrl = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene';
@@ -30,5 +25,10 @@ export class FirmApiService {
     console.log(firmUrl);
     return this.http.get(firmUrl).map(response => response as FirmApiCompaniesInterface);
 
+  }
+
+  searchCompanies(value: string) {
+    const firmUrl = 'https://data.opendatasoft.com/api/records/1.0/search/?dataset=base-sirene%40datanova&q=';
+    return this.http.get(firmUrl + value).map(response => response as FirmApiCompaniesInterface);
   }
 }
