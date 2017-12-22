@@ -1,10 +1,5 @@
 <div class=" mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>id</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
