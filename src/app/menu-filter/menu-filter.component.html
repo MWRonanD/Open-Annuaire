@@ -6,7 +6,7 @@
     <div *ngIf="filters.codpos">
       <i (click)="removeFilter('codpos')" class="material-icons">close</i><span>{{filters.codpos}}</span>
     </div>
-    <mat-form-field *ngIf="filters.postal_code === undefined">
+    <mat-form-field *ngIf="filters.codpos === undefined">
       <input #postalCodeInput (keyup.enter)="addFilter('codpos', postalCodeInput.value, $event); postalCodeInput.value = ''" matInput name="postalCodeIFilter" type="text" placeholder="Ajouter un code postal"/>
     </mat-form-field>
     <hr>
@@ -14,7 +14,7 @@
     <div *ngIf="filters.depet">
       <i (click)="removeFilter('depet')" class="material-icons">close</i><span>{{filters.depet}}</span>
     </div>
-    <mat-form-field *ngIf="filters.department === undefined">
+    <mat-form-field *ngIf="filters.depet === undefined">
       <input #departmentInput (keyup.enter)="addFilter('depet',departmentInput.value, $event); departmentInput.value = ''" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
     <hr>
@@ -22,7 +22,7 @@
     <div *ngIf="filters.sigle">
       <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
     </div>
-    <mat-form-field *ngIf="filters.legal_form === undefined">
+    <mat-form-field *ngIf="filters.sigle === undefined">
       <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''" matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
     </mat-form-field>
   </div>
