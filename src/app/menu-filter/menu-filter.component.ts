@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FirmApiService} from '../firm-api.service';
-import {Filter} from '../Filter';
+import {Filter} from '../Model/Filter';
 
 @Component({
   selector: 'app-menu-filter',

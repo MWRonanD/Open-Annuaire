@@ -5,29 +5,24 @@
       <mat-cell *matCellDef="let element">{{ element.id }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="siren">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Numéro de Siret</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.siren }}</mat-cell>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom de l'entreprise</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.names.best }}</mat-cell>
+    <ng-container matColumnDef="siret">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Numéro de Siret</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.siret }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="address">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Addresse</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Adresse</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.address }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="city">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Ville</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.city }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="zipCode">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Code postal</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.postal_code }}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
