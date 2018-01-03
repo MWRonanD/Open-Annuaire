@@ -1,28 +1,87 @@
-  <div class="filter">
-    <h3>216 Résultats</h3>
-    <hr>
-
-    <h4>Code postal</h4>
-    <div *ngIf="filters.codpos">
-      <i (click)="removeFilter('codpos')" class="material-icons">close</i><span>{{filters.codpos}}</span>
+<div class="filter">
+  <h3>216 Résultats</h3>
+  <div class="yellow-line">
+    <h6>Activiter (code APE)</h6>
+    <div *ngIf="filters.ape">
+      <i (click)="removeFilter('ape')" class="material-icons">close</i><span>{{filters.ape}}</span>
     </div>
-    <mat-form-field *ngIf="filters.postal_code === undefined">
-      <input #postalCodeInput (keyup.enter)="addFilter('codpos', postalCodeInput.value, $event); postalCodeInput.value = ''" matInput name="postalCodeIFilter" type="text" placeholder="Ajouter un code postal"/>
+    <mat-form-field *ngIf="filters.ape === undefined">
+      <input #apeCodeInput (keyup.enter)="addFilter('ape', apeCodeInput.value, $event); apeCodeInput.value = ''"
+             matInput name="apeCodeFilter" type="text" placeholder="Ajouter une activité"/>
     </mat-form-field>
-    <hr>
+  </div>
+  <div class="green-line">
+    <h6>Catégorie d'entreprise</h6>
+    <div *ngIf="filters.ape">
+      <i (click)="removeFilter('ape')" class="material-icons">close</i><span>{{filters.ape}}</span>
+    </div>
+    <mat-form-field *ngIf="filters.ape === undefined">
+      <input #apeCodeInput (keyup.enter)="addFilter('ape', apeCodeInput.value, $event); apeCodeInput.value = ''"
+             matInput name="apeCodeFilter" type="text" placeholder="Ajouter une catégorie d'entreprise"/>
+    </mat-form-field>
+  </div>
+  <div class="light-blue-line">
     <h6>Département</h6>
     <div *ngIf="filters.depet">
       <i (click)="removeFilter('depet')" class="material-icons">close</i><span>{{filters.depet}}</span>
     </div>
     <mat-form-field *ngIf="filters.department === undefined">
-      <input #departmentInput (keyup.enter)="addFilter('depet',departmentInput.value, $event); departmentInput.value = ''" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
+      <input #departmentInput
+             (keyup.enter)="addFilter('depet',departmentInput.value, $event); departmentInput.value = ''"
+             matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
-    <hr>
-    <h4>Status juridique</h4>
+  </div>
+  <div class="dark-blue-line">
+    <h6>Comunne</h6>
+    <div *ngIf="filters.codpos">
+      <i (click)="removeFilter('codpos')" class="material-icons">close</i><span>{{filters.codpos}}</span>
+    </div>
+    <mat-form-field *ngIf="filters.postal_code === undefined">
+      <input #postalCodeInput
+             (keyup.enter)="addFilter('codpos', postalCodeInput.value, $event); postalCodeInput.value = ''" matInput
+             name="postalCodeIFilter" type="text" placeholder="Ajouter une commune"/>
+    </mat-form-field>
+  </div>
+  <div class="dark-purple-line ">
+    <h6>Année de création</h6>
+    <div *ngIf="filters.codpos">
+      <i (click)="removeFilter('codpos')" class="material-icons">close</i><span>{{filters.codpos}}</span>
+    </div>
+    <mat-form-field *ngIf="filters.postal_code === undefined">
+      <input #postalCodeInput
+             (keyup.enter)="addFilter('codpos', postalCodeInput.value, $event); postalCodeInput.value = ''" matInput
+             name="postalCodeIFilter" type="text" placeholder="Ajouter une année de création"/>
+    </mat-form-field>
+  </div>
+  <div class="light-purple-line">
+    <h6>Status juridique</h6>
     <div *ngIf="filters.sigle">
       <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
     </div>
     <mat-form-field *ngIf="filters.legal_form === undefined">
-      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''" matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
+      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''"
+             matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
     </mat-form-field>
   </div>
+  <div class="pink-line">
+    <h6>Effectifs</h6>
+    <div *ngIf="filters.sigle">
+      <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
+    </div>
+    <mat-form-field *ngIf="filters.legal_form === undefined">
+      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''"
+             matInput name="legalFormFilter" type="text" placeholder="Ajouter un effectif"/>
+    </mat-form-field>
+  </div>
+  <div class="orange-line">
+    <h6>Région</h6>
+    <div *ngIf="filters.sigle">
+      <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
+    </div>
+    <mat-form-field *ngIf="filters.legal_form === undefined">
+      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''"
+             matInput name="legalFormFilter" type="text" placeholder="Ajouter une région"/>
+    </mat-form-field>
+  </div>
+</div>
+

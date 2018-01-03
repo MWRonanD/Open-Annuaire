@@ -1,0 +1,33 @@
+.yellow-line {
+  border-left: 4px solid #ff9800 ;
+}
+
+.green-line {
+  border-left: 4px solid #9acb00;
+}
+.dark-purple-line {
+  border-left: 4px solid #6534CC;
+}
+.light-purple-line {
+  border-left: 4px solid #a83acd;
+}
+
+.light-blue-line {
+  border-left: 4px solid #1ba0e5;
+}
+
+.dark-blue-line {
+  border-left: 4px solid #3567ca;
+}
+
+.pink-line {
+  border-left: 4px solid #cb308b;
+}
+
+.orange-line {
+  border-left: 4px solid #cc5200 ;
+}
+
+div {
+  border-bottom: 1px solid lightgray;
+}
