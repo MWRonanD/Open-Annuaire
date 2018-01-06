@@ -23,7 +23,7 @@
         <a class="nav-link active" routerLink="/tableau">Tableau</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Carte</a>
+        <a class="nav-link" routerLink="/maps">Carte</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Export des données</a>
@@ -37,6 +37,6 @@
 <br>
 
 <div class="row">
-  <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" class="col-md-2"></app-menu-filter>
-  <router-outlet></router-outlet>
+<app-menu-filter (onNewFilter)="convertFilterToCompany($event);generateUrl($event)" class="col-md-2"></app-menu-filter>
+  <router-outlet ></router-outlet>
 </div>
