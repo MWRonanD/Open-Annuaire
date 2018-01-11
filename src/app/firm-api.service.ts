@@ -20,7 +20,7 @@ export class FirmApiService {
     const filterKeys = Object.keys(filter);
 
     for (let i = 0; i < filterKeys.length; i++) {
-      firmUrl = firmUrl + filterKeys[i] + '=' + filter[filterKeys[i]] + '&';
+      firmUrl = firmUrl + filterKeys[i] + ':' + filter[filterKeys[i]] + ';';
     }
     console.log(firmUrl);
     return this.http.get(firmUrl).map(response => response as FirmApiCompaniesInterface);

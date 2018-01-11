@@ -25,10 +25,8 @@
     <div *ngIf="filters.depet">
       <i (click)="removeFilter('depet')" class="material-icons">close</i><span>{{filters.depet}}</span>
     </div>
-    <mat-form-field *ngIf="filters.department === undefined">
-      <input #departmentInput
-             (keyup.enter)="addFilter('depet',departmentInput.value, $event); departmentInput.value = ''"
-             matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
+    <mat-form-field *ngIf="filters.depet === undefined">
+      <input #departmentInput (keyup.enter)="addFilter('depet',departmentInput.value, $event); departmentInput.value = ''" matInput name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
   </div>
   <div class="dark-blue-line">
@@ -58,9 +56,8 @@
     <div *ngIf="filters.sigle">
       <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
     </div>
-    <mat-form-field *ngIf="filters.legal_form === undefined">
-      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''"
-             matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
+    <mat-form-field *ngIf="filters.sigle === undefined">
+      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''" matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
     </mat-form-field>
   </div>
   <div class="pink-line">
