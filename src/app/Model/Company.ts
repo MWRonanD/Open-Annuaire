@@ -6,7 +6,7 @@ export class Company {
   department?: string;
   address?: string;
   city?: string;
-  zipCode?: string
+  zipCode?: string;
   legalForm?: string;
   dateCreation?: Date;
   numberEmployees?: string;

@@ -17,6 +17,8 @@ import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { AppRoutingModule } from './app-routing.module';
 import {SendCompanyService} from './send-company.service';
+import { MapsComponent } from './maps/maps.component';
+import {SendUrlService} from './send-url.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import {SendCompanyService} from './send-company.service';
     TableFirmComponent,
     MenuFilterComponent,
     SearchBoxComponent,
+    MapsComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import {SendCompanyService} from './send-company.service';
     MatPaginatorModule,
     AppRoutingModule,
   ],
-  providers: [SendCompanyService],
+  providers: [SendCompanyService, SendUrlService],
   bootstrap: [AppComponent]
 })
 

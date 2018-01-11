@@ -1,4 +1,4 @@
- import {Component, Input, ViewChild} from '@angular/core';
+import {Component, Input, ViewChild} from '@angular/core';
 import {Company} from '../Model/Company';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {SendCompanyService} from '../send-company.service';
@@ -12,7 +12,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class TableFirmComponent {
   subscription: Subscription;
-  displayedColumns = ['id', 'name', 'siret', 'address', 'city'];
+  displayedColumns = ['name', 'siret', 'address', 'city'];
   dataSource: MatTableDataSource<Company>;
 
   @ViewChild(MatSort) sort: MatSort;
@@ -25,5 +25,4 @@ export class TableFirmComponent {
       this.dataSource.paginator = this.paginator;
     });
   }
-
 }

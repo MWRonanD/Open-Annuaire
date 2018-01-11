@@ -1,11 +1,5 @@
 <form #searchFirmForm="ngForm">
   <mat-form-field >
-      <input (change)="searchCompany( selected, searchBy)" type="text" [(ngModel)]="searchBy" name="searchBy" matInput placeholder=" Recherche par ...">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-select  [(value)]="selected"  placeholder="Recherche par">
-      <mat-option value="name">Nom de l'entreprise</mat-option>
-      <mat-option value="siret">N° de SIRET</mat-option>
-    </mat-select>
+      <input (keyup.enter)="searchCompany(value)" type="text" [(ngModel)]="value" name="searchCompany" matInput placeholder="Nom de l'enreprise, n° de SIRET, activité, nom du dirigeant...">
   </mat-form-field>
 </form>
