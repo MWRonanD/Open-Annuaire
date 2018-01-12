@@ -1,7 +1,6 @@
-import {Component, Input, ViewChild} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Company} from '../Model/Company';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {SendCompanyService} from '../send-company.service';
 import {Subscription} from 'rxjs/Subscription';
 import {SendUrlService} from '../send-url.service';
 import {FirmApiService} from '../firm-api.service';
@@ -20,7 +19,7 @@ export class TableFirmComponent {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private sendCompanyService: SendCompanyService, sendUrlService: SendUrlService, firmApiService: FirmApiService) {
+  constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService) {
     this.subscription = sendUrlService.getUrl().subscribe(data => {
       firmApiService.searchCompanies(data).subscribe((dataCompanies) => {
         const companies = firmApiService.convertDataToCompanies(dataCompanies);
