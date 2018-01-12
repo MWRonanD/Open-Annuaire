@@ -1,13 +1,15 @@
 .yellow-line {
-  border-left: 4px solid #ff9800 ;
+  border-left: 4px solid #ff9800;
 }
 
 .green-line {
   border-left: 4px solid #9acb00;
 }
+
 .dark-purple-line {
   border-left: 4px solid #6534CC;
 }
+
 .light-purple-line {
   border-left: 4px solid #a83acd;
 }
@@ -25,9 +27,28 @@
 }
 
 .orange-line {
-  border-left: 4px solid #cc5200 ;
+  border-left: 4px solid #cc5200;
 }
 
 div {
   border-bottom: 1px solid lightgray;
+}
+
+.filter {
+  background-color: whitesmoke;
+}
+
+.filter h4 {
+  color: dimgrey;
+  font-size: 15px;
+  margin-left: 25px;
+}
+
+.filter h3 {
+  margin-left: 15px;
+  color: #2569b0;
+}
+
+.filter span {
+  color: #286cad;
 }
