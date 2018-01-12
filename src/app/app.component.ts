@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {Company} from './Model/Company';
 import {FirmApiService} from './firm-api.service';
 import {Filter} from './Model/Filter';
 import {SendCompanyService} from './send-company.service';
 import {SendUrlService} from './send-url.service';
-import {filter} from "rxjs/operators";
 
 
 @Component({
@@ -30,7 +28,7 @@ export class AppComponent implements OnInit {
          this.companies.push(data.company);
        });
      } else { */
-    this.firmApiService.getCompaniesBy(filter).subscribe((data) => {
+    this.firmApiService.searchCompanies(value).subscribe((data) => {
       for (let i = 0; i < data.records.length; i++) {
         const company = new Company(
           data.records[i].fields.siret,
@@ -48,6 +46,8 @@ export class AppComponent implements OnInit {
           data.records[i].fields.coordonnees);
         this.companies.push(company);
       }
+
+      this.sendCompanyService.sendCompanies(this.companies);
     });
     /*    }*/
   }
