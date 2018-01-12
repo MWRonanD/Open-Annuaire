@@ -7,7 +7,8 @@ import {ExportComponent} from './export/export.component';
 const routes: Routes = [
   {path: 'tableau', component: TableFirmComponent},
   {path: 'maps', component: MapsComponent},
-  {path: 'export', component: ExportComponent}
+  {path: 'export', component: ExportComponent},
+  { path: '**',   redirectTo: '/tableau', pathMatch: 'full' },
 ];
 
 @NgModule({

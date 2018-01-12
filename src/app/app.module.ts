@@ -16,7 +16,6 @@ import {TableFirmComponent} from './table-firm/table-firm.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { AppRoutingModule } from './app-routing.module';
-import {SendCompanyService} from './send-company.service';
 import { MapsComponent } from './maps/maps.component';
 import {SendUrlService} from './send-url.service';
 import { ExportComponent } from './export/export.component';
@@ -43,7 +42,7 @@ import { ExportComponent } from './export/export.component';
     MatPaginatorModule,
     AppRoutingModule,
   ],
-  providers: [SendCompanyService, SendUrlService],
+  providers: [SendUrlService],
   bootstrap: [AppComponent]
 })
 
