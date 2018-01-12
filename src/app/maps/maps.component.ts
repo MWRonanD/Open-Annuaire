@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {SendUrlService} from '../send-url.service';
 import {Subscription} from 'rxjs/Subscription';
-import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.css']
+  styleUrls: ['./maps.component.css'],
 })
 export class MapsComponent implements OnInit {
   subscription: Subscription;

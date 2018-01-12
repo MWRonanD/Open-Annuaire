@@ -5,7 +5,8 @@ import {MapsComponent} from "./maps/maps.component";
 
 const routes: Routes = [
   {path: 'tableau', component: TableFirmComponent},
-  {path: 'maps', component: MapsComponent}
+  {path: 'maps', component: MapsComponent},
+  { path: '**',   redirectTo: '/tableau', pathMatch: 'full' },
 ];
 
 @NgModule({
