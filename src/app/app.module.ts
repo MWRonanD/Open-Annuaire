@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {SendCompanyService} from './send-company.service';
 import { MapsComponent } from './maps/maps.component';
 import {SendUrlService} from './send-url.service';
+import { ExportComponent } from './export/export.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {SendUrlService} from './send-url.service';
     MenuFilterComponent,
     SearchBoxComponent,
     MapsComponent,
+    ExportComponent,
   ],
   imports: [
     BrowserModule,
