@@ -31,12 +31,7 @@
     </ul>
   </div>
 </div>
-
-<br>
-<br>
-<br>
-
 <div class="row">
-<app-menu-filter (onNewFilter)="convertFilterToCompany($event);generateUrl($event)" class="col-md-2"></app-menu-filter>
-  <router-outlet ></router-outlet>
+  <app-menu-filter (onNewFilter)="convertFilterToCompany($event);generateUrl($event)" class="col-md-3"></app-menu-filter>
+  <router-outlet></router-outlet>
 </div>
