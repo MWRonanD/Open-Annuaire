@@ -20,11 +20,15 @@ export class ExportComponent {
     this.subscription = sendUrlService.getUrl().subscribe(data => {
       firmApiService.searchCompanies(data).subscribe((dataCompanies) => {
         this.companies = firmApiService.convertDataToCompanies(dataCompanies);
-        const jsonChain = JSON.stringify(this.companies);
-        this.exportjson = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(jsonChain));
+        this.exportjson = this.exportJson(this.companies);
 
       });
     });
+  }
+
+  exportJson(companies: Company[]) {
+    const jsonChain = JSON.stringify(companies);
+    return this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(jsonChain));
   }
 
 
