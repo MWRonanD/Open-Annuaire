@@ -1,37 +1,63 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="row">
-        <div class="col-md-5">
-          <a class="navbar-brand" href=""> <img class="logo" src='assets/logo.png'> </a>
-        </div>
-        <div class="col-md-6">
-          <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>
-        </div>
-        <div class="col-md-1">
-          <span class="glyphicon glyphicon-question-sign" aria-hidden="true">aide</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<div class="container-fluid">
-  <div class="row background-tabs">
-    <span>10 848 086 entreprises au 15/11/2017</span>
-    <ul class="nav nav-tabs">
-      <li class="nav-item ">
-        <a class="nav-link" routerLink="/tableau" routerLinkActive="active">Tableau</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/maps" routerLinkActive="active">Carte</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active">Export des données</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" class="col-md-3"></app-menu-filter>
-  <router-outlet></router-outlet>
-</div>
+<!--<nav class="navbar navbar-default">-->
+<!--<div class="container-fluid">-->
+<!--<div class="navbar-header">-->
+<!--<div class="row">-->
+<!--<div class="col-md-5">-->
+<!--<a class="navbar-brand" href=""> <img class="logo" src='assets/logo.png'> </a>-->
+<!--</div>-->
+<!--<div class="col-md-6">-->
+<!--<app-search-box (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>-->
+<!--</div>-->
+<!--<div class="col-md-1">-->
+<!--<span class="glyphicon glyphicon-question-sign" aria-hidden="true">aide</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</nav>-->
+<!--<div class="container-fluid">-->
+<!--<div class="row background-tabs">-->
+<!--<span>10 848 086 entreprises au 15/11/2017</span>-->
+<!--<ul class="nav nav-tabs">-->
+<!--<li class="nav-item ">-->
+<!--<a class="nav-link" routerLink="/tableau" routerLinkActive="active">Tableau</a>-->
+<!--</li>-->
+<!--<li class="nav-item">-->
+<!--<a class="nav-link" routerLink="/maps" routerLinkActive="active">Carte</a>-->
+<!--</li>-->
+<!--<li class="nav-item">-->
+<!--<a class="nav-link" href="#" routerLinkActive="active">Export des données</a>-->
+<!--</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div fxLayout>-->
+<!--<app-menu-filter (onNewFilter)="convertFilterToCompany($event)"></app-menu-filter>-->
+<!--<router-outlet></router-outlet>-->
+<!--</div>-->
+
+
+
+
+  <mat-sidenav-container class="menu-left" fullscreen>
+    <mat-sidenav #sideNav opened mode="side" class="md-sidenav">
+      <mat-toolbar color="primary">
+        <span fxFlex></span>
+      </mat-toolbar>
+      <app-menu-filter (onNewFilter)="convertFilterToCompany($event)"></app-menu-filter>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <span (click)="sideNav.toggle()">Angular Material</span>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+      <!--<mat-card fxFlex>-->
+        <!--<h2>xd</h2>-->
+        <!--<p>xd</p>-->
+      <!--</mat-card>-->
+
+  </mat-sidenav-container>
+

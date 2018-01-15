@@ -40,15 +40,16 @@ div {
 
 .filter h4 {
   color: dimgrey;
-  font-size: 15px;
+  font-size: 12px;
   margin-left: 25px;
 }
 
 .filter h3 {
-  margin-left: 15px;
+  margin-left: 11px;
   color: #2569b0;
 }
 
 .filter span {
   color: #286cad;
 }
+

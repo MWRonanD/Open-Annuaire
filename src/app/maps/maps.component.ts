@@ -6,7 +6,7 @@ import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.css'],
+  styleUrls: ['./maps.component.scss'],
 })
 export class MapsComponent implements OnInit {
   subscription: Subscription;
