@@ -1,14 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostBinding} from '@angular/core';
 import {SendUrlService} from '../send-url.service';
 import {Subscription} from 'rxjs/Subscription';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {FadeInAnimation} from '../animations';
 
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.scss'],
+  animations: [FadeInAnimation],
 })
 export class MapsComponent implements OnInit {
+  @HostBinding('@FadeInAnimation') fadeInAnimation = true;
   subscription: Subscription;
   mapUrl: SafeResourceUrl;
 

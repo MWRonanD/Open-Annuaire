@@ -9,7 +9,7 @@ import {
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
-  MatSelectModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTabsModule, MatCardModule
+  MatSelectModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTabsModule, MatCardModule, MatCheckboxModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -43,6 +43,7 @@ import {SendUrlService} from './send-url.service';
     MatPaginatorModule,
     MatTabsModule,
     MatCardModule,
+    MatCheckboxModule,
     MatMenuModule,
     MatSidenavModule,
     MatListModule,

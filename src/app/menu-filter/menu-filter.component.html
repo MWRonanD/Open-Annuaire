@@ -1,8 +1,8 @@
-<div class="filter">
-  <div>
+
+  <div class="filter" fxFlex="5">
     <h3><span>216</span> Résultats</h3>
   </div>
-  <div class="yellow-line">
+  <div class="orange-line filter" fxFlex>
     <h6>Activiter (code APE)</h6>
     <div *ngIf="filters.ape">
       <i (click)="removeFilter('ape')" class="material-icons">close</i><span>{{filters.ape}}</span>
@@ -12,7 +12,7 @@
              matInput name="apeCodeFilter" type="text" placeholder="Ajouter une activité"/>
     </mat-form-field>
   </div>
-  <div class="green-line">
+  <div class="green-line filter" fxFlex>
     <h6>Catégorie d'entreprise</h6>
     <div *ngIf="filters.ape">
       <i (click)="removeFilter('ape')" class="material-icons">close</i><span>{{filters.ape}}</span>
@@ -22,7 +22,7 @@
              matInput name="apeCodeFilter" type="text" placeholder="Ajouter une catégorie d'entreprise"/>
     </mat-form-field>
   </div>
-  <div class="light-blue-line">
+  <div class="light-blue-line filter" fxFlex>
     <h6>Département</h6>
     <div *ngIf="filters.depet">
       <i (click)="removeFilter('depet')" class="material-icons">close</i><span>{{filters.depet}}</span>
@@ -33,7 +33,7 @@
              name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
   </div>
-  <div class="dark-blue-line">
+  <div class="dark-blue-line filter" fxFlex>
     <h6>Comunne</h6>
     <div *ngIf="filters.codpos">
       <i (click)="removeFilter('codpos')" class="material-icons">close</i><span>{{filters.codpos}}</span>
@@ -44,7 +44,7 @@
              name="postalCodeIFilter" type="text" placeholder="Ajouter une commune"/>
     </mat-form-field>
   </div>
-  <div class="dark-purple-line ">
+  <div class="dark-purple-line filter" fxFlex>
     <h6>Année de création</h6>
     <div *ngIf="filters.codpos">
       <i (click)="removeFilter('codpos')" class="material-icons">close</i><span>{{filters.codpos}}</span>
@@ -55,7 +55,7 @@
              name="postalCodeIFilter" type="text" placeholder="Ajouter une année de création"/>
     </mat-form-field>
   </div>
-  <div class="light-purple-line">
+  <div class="light-purple-line filter" fxFlex>
     <h6>Status juridique</h6>
     <div *ngIf="filters.sigle">
       <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
@@ -65,7 +65,7 @@
              matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
     </mat-form-field>
   </div>
-  <div class="pink-line">
+  <div class="pink-line filter" fxFlex>
     <h6>Effectifs</h6>
     <div *ngIf="filters.sigle">
       <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
@@ -75,7 +75,7 @@
              matInput name="legalFormFilter" type="text" placeholder="Ajouter un effectif"/>
     </mat-form-field>
   </div>
-  <div class="orange-line">
+  <div class="orange-line filter" fxFlex>
     <h6>Région</h6>
     <div *ngIf="filters.sigle">
       <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
@@ -85,5 +85,4 @@
              matInput name="legalFormFilter" type="text" placeholder="Ajouter une région"/>
     </mat-form-field>
   </div>
-</div>
 

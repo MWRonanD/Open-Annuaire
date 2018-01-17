@@ -37,27 +37,34 @@
 <!--</div>-->
 
 
+<mat-toolbar class="example-header" fxLayout="row">
+  <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
+  <div fxFlex="10"></div>
+  <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>
+</mat-toolbar>
+<mat-toolbar class="example-header2" fxLayout="row">
+  <p>10 848 086 entreprises</p>
+  <div fxFlex="10"></div>
+  <ul class="nav nav-tabs">
+  <li class="nav-item ">
+  <a class="nav-link" routerLink="/tableau" routerLinkActive="active">Tableau</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" routerLink="/maps" routerLinkActive="active">Carte</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#" routerLinkActive="active">Export des données</a>
+  </li>
+  </ul>
+</mat-toolbar>
 
+<mat-sidenav-container class="example-container mat-elevation-z16">
+  <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
+               [fixedInViewport]="false">
+    <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" fxLayout="column" class="menu-filter"></app-menu-filter>
+  </mat-sidenav>
 
-  <mat-sidenav-container class="menu-left" fullscreen>
-    <mat-sidenav #sideNav opened mode="side" class="md-sidenav">
-      <mat-toolbar color="primary">
-        <span fxFlex></span>
-      </mat-toolbar>
-      <app-menu-filter (onNewFilter)="convertFilterToCompany($event)"></app-menu-filter>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <mat-toolbar color="primary">
-        <span (click)="sideNav.toggle()">Angular Material</span>
-      </mat-toolbar>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-
-      <!--<mat-card fxFlex>-->
-        <!--<h2>xd</h2>-->
-        <!--<p>xd</p>-->
-      <!--</mat-card>-->
-
-  </mat-sidenav-container>
-
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
