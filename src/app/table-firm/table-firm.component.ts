@@ -11,11 +11,9 @@ import {FadeInAnimation} from '../animations';
 @Component({
   selector: 'app-table-firm',
   templateUrl: './table-firm.component.html',
-  styleUrls: ['./table-firm.component.scss'],
-  animations: [FadeInAnimation]
+  styleUrls: ['./table-firm.component.scss']
 })
 export class TableFirmComponent {
-  @HostBinding('@FadeInAnimation') fadeInAnimation = true;
   subscription: Subscription;
   displayedColumns = ['name', 'siret', 'address', 'city'];
   dataSource: MatTableDataSource<Company>;

@@ -9,10 +9,8 @@ import {FadeInAnimation} from '../animations';
   selector: 'app-maps',
   templateUrl: './maps.component.html',
   styleUrls: ['./maps.component.scss'],
-  animations: [FadeInAnimation],
 })
 export class MapsComponent implements OnInit {
-  @HostBinding('@FadeInAnimation') fadeInAnimation = true;
   subscription: Subscription;
   mapUrl: SafeResourceUrl;
 
