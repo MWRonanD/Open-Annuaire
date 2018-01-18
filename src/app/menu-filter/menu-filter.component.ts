@@ -5,7 +5,7 @@ import {Filter} from '../Model/Filter';
 @Component({
   selector: 'app-menu-filter',
   templateUrl: './menu-filter.component.html',
-  styleUrls: ['./menu-filter.component.css']
+  styleUrls: ['./menu-filter.component.scss']
 })
 export class MenuFilterComponent implements OnInit {
   @Output() onNewFilter = new EventEmitter<Filter>();

@@ -1,15 +1,17 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, HostBinding, ViewChild} from '@angular/core';
 import {Company} from '../Model/Company';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {Subscription} from 'rxjs/Subscription';
 import {SendUrlService} from '../send-url.service';
 import {FirmApiService} from '../firm-api.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {FadeInAnimation} from '../animations';
 
 
 @Component({
   selector: 'app-table-firm',
   templateUrl: './table-firm.component.html',
-  styleUrls: ['./table-firm.component.css']
+  styleUrls: ['./table-firm.component.scss']
 })
 export class TableFirmComponent {
   subscription: Subscription;

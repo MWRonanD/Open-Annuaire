@@ -1,37 +1,31 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <div class="row">
-        <div class="col-md-5">
-          <a class="navbar-brand" href=""> <img class="logo" src='assets/logo.png'> </a>
-        </div>
-        <div class="col-md-6">
-          <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>
-        </div>
-        <div class="col-md-1">
-          <span class="glyphicon glyphicon-question-sign" aria-hidden="true">aide</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
-<div class="container-fluid">
-  <div class="row background-tabs">
-    <span>10 848 086 entreprises au 15/11/2017</span>
-    <ul class="nav nav-tabs">
-      <li class="nav-item ">
-        <a class="nav-link" routerLink="/tableau" routerLinkActive="active">Tableau</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/maps" routerLinkActive="active">Carte</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" routerLinkActive="active">Export des données</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<div class="row">
-  <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" class="col-md-3"></app-menu-filter>
-  <router-outlet></router-outlet>
-</div>
+<mat-toolbar class="example-header" fxLayout="row">
+  <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
+  <div fxFlex="10"></div>
+  <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>
+</mat-toolbar>
+<mat-toolbar class="example-header2" fxLayout="row">
+  <p>10 848 086 entreprises</p>
+  <div fxFlex="10"></div>
+  <ul class="nav nav-tabs">
+  <li class="nav-item ">
+  <a class="nav-link" routerLink="/tableau" routerLinkActive="active">Tableau</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" routerLink="/maps" routerLinkActive="active">Carte</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="#" routerLinkActive="active">Export des données</a>
+  </li>
+  </ul>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container mat-elevation-z16">
+  <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
+               [fixedInViewport]="false">
+    <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" fxLayout="column" class="menu-filter"></app-menu-filter>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

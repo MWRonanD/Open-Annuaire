@@ -4,16 +4,16 @@ import {SendUrlService} from './send-url.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {FirmApiService} from './firm-api.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   providers: [FirmApiService]
 })
 export class AppComponent implements OnInit {
-
   params = '';
+
+
 
   constructor(private  sendUrlService: SendUrlService, router: Router) {
     router.events.subscribe(event => {

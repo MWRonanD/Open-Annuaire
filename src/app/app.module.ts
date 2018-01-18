@@ -9,8 +9,10 @@ import {
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
-  MatSelectModule
+  MatSelectModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTabsModule, MatCardModule, MatCheckboxModule
 } from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 import {AppComponent} from './app.component';
 import {TableFirmComponent} from './table-firm/table-firm.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
@@ -28,6 +30,7 @@ import {SendUrlService} from './send-url.service';
     MapsComponent,
   ],
   imports: [
+    FlexLayoutModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -38,7 +41,15 @@ import {SendUrlService} from './send-url.service';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatTabsModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatListModule,
+    MatToolbarModule,
     AppRoutingModule,
+
   ],
   providers: [SendUrlService],
   bootstrap: [AppComponent]
