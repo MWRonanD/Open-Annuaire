@@ -1,4 +1,4 @@
-<div style="margin: 20px;" class="mat-elevation-z1">
+<div class="xd">
   <mat-table #table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
@@ -23,7 +23,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-  <mat-paginator #paginator
+  <mat-paginator class="mat-elevation-z1 " #paginator
                  [pageSize]="10"
                  [pageSizeOptions]="[5, 10, 20]">
   </mat-paginator>

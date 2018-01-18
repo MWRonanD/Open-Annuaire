@@ -9,18 +9,29 @@ table{
   margin: 0 25px 0 25px;
 }
 
-tbody tr:nth-child(even){
-  background-color:#f2f2f2;
-}
-tbody tr:nth-child(odd){
-  background-color:white;
-}
-
 mat-row:nth-child(odd){
   background-color:#efefef;
 }
 mat-header-row{
   background-color:#d8d8d8;
+}
+
+.xd {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  min-width: 300px;
+  max-width: 100%;
+  padding: 1%;
+}
+
+.mat-table {
+  overflow: auto;
+}
+
+
+.mat-header-row, .mat-row {
+  min-width: 1000px;
 }
 
 
