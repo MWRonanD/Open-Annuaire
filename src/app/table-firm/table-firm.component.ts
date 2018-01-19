@@ -1,6 +1,6 @@
 import {Component, HostBinding, ViewChild} from '@angular/core';
 import {Company} from '../Model/Company';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, PageEvent} from '@angular/material';
 import {Subscription} from 'rxjs/Subscription';
 import {SendUrlService} from '../send-url.service';
 import {FirmApiService} from '../firm-api.service';
@@ -18,11 +18,15 @@ export class TableFirmComponent {
   displayedColumns = ['name', 'siret', 'address', 'city'];
   dataSource: MatTableDataSource<Company>;
 
+  param = '';
+
+  pageEvent: PageEvent;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService) {
     this.subscription = sendUrlService.getUrl().subscribe(data => {
+      this.param = data;
       firmApiService.searchCompanies(data).subscribe((dataCompanies) => {
         const companies = firmApiService.convertDataToCompanies(dataCompanies);
         this.dataSource = new MatTableDataSource<Company>(companies);
@@ -30,5 +34,16 @@ export class TableFirmComponent {
         this.dataSource.paginator = this.paginator;
       });
     });
+  }
+
+  paginatorEvent($event) {
+    this.pageEvent = $event;
+    if (this.pageEvent.pageIndex)
+      this.firmApiService.searchCompanies(this.param, this.pageEvent.pageSize * 2, this.pageEvent.pageIndex * this.pageEvent.pageSize).subscribe((dataCompanies) => {
+        const companies = this.firmApiService.convertDataToCompanies(dataCompanies);
+        this.dataSource = new MatTableDataSource<Company>(companies);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+      });
   }
 }

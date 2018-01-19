@@ -10,9 +10,17 @@ export class FirmApiService {
   constructor(private http: HttpClient) {
   }
 
-  searchCompanies(value: string) {
-    const firmUrl = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene&q=';
-    return this.http.get(firmUrl + value).map(response => response as FirmApiCompaniesInterface);
+  searchCompanies(value: string, rows?: number, start?: number) {
+    let firmUrl = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene';
+    if (rows !== undefined) {
+      firmUrl = firmUrl + '&rows=' + rows;
+    }
+    if (start !== undefined) {
+      firmUrl = firmUrl + '&start=' + start;
+    }
+    firmUrl = firmUrl + '&q=' + value;
+    console.log(firmUrl);
+    return this.http.get(firmUrl).map(response => response as FirmApiCompaniesInterface);
   }
 
   convertDataToCompanies(data) {
