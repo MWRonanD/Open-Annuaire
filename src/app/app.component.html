@@ -20,7 +20,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container mat-elevation-z16">
-  <mat-sidenav #sidenav mode="side" opened="true" class="example-sidenav"
+  <mat-sidenav #sidenav  [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'" opened="true" class="example-sidenav"
                [fixedInViewport]="false">
     <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" fxLayout="column" class="menu-filter"></app-menu-filter>
   </mat-sidenav>

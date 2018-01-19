@@ -12,10 +12,17 @@ import {FirmApiService} from './firm-api.service';
 })
 export class AppComponent implements OnInit {
   params = '';
+  screenWidth: number;
 
 
 
   constructor(private  sendUrlService: SendUrlService, router: Router) {
+    // set screenWidth on page load
+    this.screenWidth = window.innerWidth;
+    window.onresize = () => {
+      // set screenWidth on screen size change
+      this.screenWidth = window.innerWidth;
+    };
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.sendUrlService.sendUrl(this.params);
