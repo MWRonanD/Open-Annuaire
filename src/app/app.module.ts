@@ -9,7 +9,8 @@ import {
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
-  MatSelectModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTabsModule, MatCardModule, MatCheckboxModule
+  MatSelectModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTabsModule, MatCardModule, MatCheckboxModule,
+  MatProgressSpinnerModule, MatProgressBarModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
@@ -20,7 +21,10 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MapsComponent } from './maps/maps.component';
 import {SendUrlService} from './send-url.service';
+import {registerLocaleData} from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +50,8 @@ import {SendUrlService} from './send-url.service';
     MatCheckboxModule,
     MatMenuModule,
     MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatListModule,
     MatToolbarModule,
     AppRoutingModule,
