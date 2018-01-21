@@ -13,6 +13,7 @@ import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/switchMap';
 import {CompanyInterface} from '../firm-api-interface';
 import {MenuFilterComponent} from '../menu-filter/menu-filter.component';
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Component({
@@ -20,27 +21,25 @@ import {MenuFilterComponent} from '../menu-filter/menu-filter.component';
   templateUrl: './table-firm.component.html',
   styleUrls: ['./table-firm.component.scss']
 })
-export class TableFirmComponent implements OnInit {
+export class TableFirmComponent {
+  subscription: Subscription;
   displayedColumns = ['name', 'siret', 'address', 'city'];
   dataSource: TableDataSource | null;
-  param = '';
   pageSize = 10;
   pageSizeOptions = [10, 15, 20];
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MenuFilterComponent) menu: MenuFilterComponent;
-
 
   constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService) {
-  }
-
-  ngOnInit() {
-    this.dataSource = new TableDataSource(this.firmApiService, this.paginator, this.param, this.sendUrlService);
+    this.subscription = this.sendUrlService.url.subscribe((data) => {
+      if (this.dataSource === undefined) {
+        this.dataSource = new TableDataSource(this.firmApiService, this.paginator, data, this.sendUrlService);
+      }
+    });
   }
 }
 
 export class TableDataSource extends DataSource<CompanyInterface> {
   resultNumber: number;
-
   isLoadingResults: boolean;
 
   constructor(private firmApiService: FirmApiService,
@@ -58,7 +57,6 @@ export class TableDataSource extends DataSource<CompanyInterface> {
     ];
 
     this.sendUrlService.url.subscribe(data => {
-      console.log("halp");
       this.paginator.pageIndex = 0;
       this.param = data;
     });
