@@ -20,8 +20,8 @@
     <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" fxLayout="column"
                      class="menu-filter"></app-menu-filter>
   </mat-sidenav>
-
   <mat-sidenav-content>
+    <ngx-loading-bar></ngx-loading-bar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
