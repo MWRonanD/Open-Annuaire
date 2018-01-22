@@ -1,7 +1,4 @@
 <div class="company-table">
-  <div class="example-loading-shade">
-    <mat-progress-bar mode="indeterminate" *ngIf="dataSource.isLoadingResults"></mat-progress-bar>
-  </div>
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>

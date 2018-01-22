@@ -23,6 +23,9 @@ import { MapsComponent } from './maps/maps.component';
 import {SendUrlService} from './send-url.service';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -55,6 +58,9 @@ registerLocaleData(localeFr, 'fr');
     MatListModule,
     MatToolbarModule,
     AppRoutingModule,
+    LoadingBarHttpClientModule,
+    LoadingBarHttpModule,
+    LoadingBarRouterModule,
 
   ],
   providers: [SendUrlService],
