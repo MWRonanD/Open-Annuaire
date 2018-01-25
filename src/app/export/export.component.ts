@@ -13,71 +13,71 @@ const EXCEL_HTA = 'application/vnd.openxmlformats-officedocument.spreadsheetml.s
 const EXCEL_EXTENSION = '.xlsx';
 
 @Component({
-    selector: 'app-export',
-    templateUrl: './export.component.html',
-    styleUrls: ['./export.component.css']
+  selector: 'app-export',
+  templateUrl: './export.component.html',
+  styleUrls: ['./export.component.css']
 })
 export class ExportComponent {
 
   static XLS = 'xls';
 
   subscription: Subscription;
-    companies: Company[];
-    exportjson: SafeUrl;
-    companiesNumber: number;
+  companies: Company[];
+  exportjson: SafeUrl;
+  companiesNumber: number;
 
 
-    constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService, private sanitizer: DomSanitizer) {
-        this.subscription = sendUrlService.getUrl().subscribe(data => {
-            firmApiService.searchCompanies(data).subscribe((dataCompanies) => {
-                this.companies = firmApiService.convertDataToCompanies(dataCompanies);
-                this.exportjson = this.exportJson(this.companies);
-                this.companiesNumber = this.companies.length;
-            });
-        });
-    }
+  constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService, private sanitizer: DomSanitizer) {
+    this.subscription = sendUrlService.getUrl().subscribe(data => {
+      console.log('xD');
+      firmApiService.searchCompanies(data, 10).subscribe((dataCompanies) => {
+        this.companies = firmApiService.convertDataToCompanies(dataCompanies);
+        this.exportjson = this.exportJson(this.companies);
+        this.companiesNumber = this.companies.length;
+      });
+    });
+  }
 
-    exportJson(companies: Company[]) {
-        const jsonChain = JSON.stringify(companies);
-        return this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(jsonChain));
-    }
+  exportJson(companies: Company[]) {
+    const jsonChain = JSON.stringify(companies);
+    return this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(jsonChain));
+  }
 
-    exportCsv() {
-        const head = [
-            'adresse',
-            'ape',
-            'categorie',
-            'ville',
-            'coordonnees',
-            'date de creation',
-            'departement',
-            'forme legal',
-            'nom',
-            'nombre employees',
-            'region',
-            'siret',
-            'code postal'
-        ];
-        const options = {
-            fieldSeparator: ';',
-            headers: head
-        };
+  exportCsv() {
+    const head = [
+      'adresse',
+      'ape',
+      'categorie',
+      'ville',
+      'coordonnees',
+      'date de creation',
+      'departement',
+      'forme legal',
+      'nom',
+      'nombre employees',
+      'region',
+      'siret',
+      'code postal'
+    ];
+    const options = {
+      fieldSeparator: ';',
+      headers: head
+    };
 
-        new Angular2Csv(this.companies, 'exportCsv', options);
-    }
+    new Angular2Csv(this.companies, 'exportCsv', options);
+  }
 
 
+  exportExcel(companies: Company[]) {
 
-      exportExcel(companies: Company[]) {
-      
-        const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(companies);
-        const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
-        const excelBuffer: any = XLSX.write(workbook, {bookType: 'xlsx', type: 'buffer'});
-        const data: Blob = new Blob([excelBuffer], {
-          type: EXCEL_HTA,
-        });
-        FileSaver.saveAs(data, 'exportexel');
-      }
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(companies);
+    const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
+    const excelBuffer: any = XLSX.write(workbook, {bookType: 'xlsx', type: 'buffer'});
+    const data: Blob = new Blob([excelBuffer], {
+      type: EXCEL_HTA,
+    });
+    FileSaver.saveAs(data, 'exportexel');
+  }
 
 
 }

@@ -1,31 +1,33 @@
-<div class=" mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort>
+<div class="company-table">
+  <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nom</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Nom</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.fields.l1_declaree }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="siret">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Numéro de Siret</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.siret }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Numéro de Siret</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.fields.siret }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="address">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Adresse</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.address }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Adresse</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.fields.l4_normalisee }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Ville</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.city }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>Ville</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.fields.libcom }}</mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-header-row  *matHeaderRowDef="displayedColumns" ></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
   </mat-table>
-  <mat-paginator #paginator
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 20]">
+  <mat-paginator class="mat-elevation-z1 " #paginator
+                 [length]="dataSource.resultNumber"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions">
   </mat-paginator>
 </div>
+
 

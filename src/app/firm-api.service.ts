@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {FirmApiCompaniesInterface} from './firm-api-interface';
+import {Observable} from 'rxjs/Observable';
 import {Company} from './Model/Company';
 
 @Injectable()
@@ -10,9 +11,16 @@ export class FirmApiService {
   constructor(private http: HttpClient) {
   }
 
-  searchCompanies(value: string) {
-    const firmUrl = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene&q=';
-    return this.http.get(firmUrl + value).map(response => response as FirmApiCompaniesInterface);
+  searchCompanies(param: string, rows?: number, start?: number): Observable<FirmApiCompaniesInterface> {
+    let firmUrl = 'https://public.opendatasoft.com/api/records/1.0/search/?dataset=sirene';
+    if (rows !== undefined) {
+      firmUrl = firmUrl + '&rows=' + rows;
+    }
+    if (start !== undefined) {
+      firmUrl = firmUrl + '&start=' + start;
+    }
+    firmUrl = firmUrl + '&q=' + param;
+    return this.http.get(firmUrl).map(response => response as FirmApiCompaniesInterface);
   }
 
   convertDataToCompanies(data) {
@@ -36,5 +44,4 @@ export class FirmApiService {
     }
     return companies;
   }
-
 }

@@ -4,18 +4,25 @@ import {SendUrlService} from './send-url.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {FirmApiService} from './firm-api.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   providers: [FirmApiService]
 })
 export class AppComponent implements OnInit {
-
   params = '';
+  screenWidth: number;
+
+
 
   constructor(private  sendUrlService: SendUrlService, router: Router) {
+    // set screenWidth on page load
+    this.screenWidth = window.innerWidth;
+    window.onresize = () => {
+      // set screenWidth on screen size change
+      this.screenWidth = window.innerWidth;
+    };
     router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.sendUrlService.sendUrl(this.params);

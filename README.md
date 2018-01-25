@@ -1,13 +1,13 @@
 # OpenAnnuaire
 
-Angular Group class project calling the Api [FirmApi](https://firmapi.com/)
+Angular Group class project calling the Api OpenDataSource
 
 ## Installation
-Run `npm install`
+
+- Clone the project `git clone git@github.com:MWAlexisL/Open-Annuaire.git`
+- Go to the new directory `cd Open-Annuaire/`
+- Install the packages `npm install`
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.

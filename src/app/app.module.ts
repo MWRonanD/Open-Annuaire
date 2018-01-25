@@ -9,8 +9,11 @@ import {
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
-  MatSelectModule
+  MatSelectModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTabsModule, MatCardModule, MatCheckboxModule,
+  MatProgressSpinnerModule, MatProgressBarModule
 } from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 import {AppComponent} from './app.component';
 import {TableFirmComponent} from './table-firm/table-firm.component';
 import { MenuFilterComponent } from './menu-filter/menu-filter.component';
@@ -19,7 +22,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { MapsComponent } from './maps/maps.component';
 import {SendUrlService} from './send-url.service';
 import { ExportComponent } from './export/export.component';
+import {registerLocaleData} from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
+registerLocaleData(localeFr, 'fr');
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +39,7 @@ import { ExportComponent } from './export/export.component';
     ExportComponent,
   ],
   imports: [
+    FlexLayoutModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -40,7 +50,20 @@ import { ExportComponent } from './export/export.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
+    MatTabsModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatListModule,
+    MatToolbarModule,
     AppRoutingModule,
+    LoadingBarHttpClientModule,
+    LoadingBarHttpModule,
+    LoadingBarRouterModule,
+
   ],
   providers: [SendUrlService],
   bootstrap: [AppComponent]
