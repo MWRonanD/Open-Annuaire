@@ -23,8 +23,12 @@ export class SendUrlService {
     const filterKeys = Object.keys(filter);
 
     for (let i = 0; i < filterKeys.length; i++) {
-      urlParameters = urlParameters + filterKeys[i] + ':' + filter[filterKeys[i]] + ';';
-    }
+      urlParameters = urlParameters + filterKeys[i] + ':' + filter[filterKeys[i]];
+      if (i !== filterKeys.length - 1) {
+        urlParameters = urlParameters + ' AND ';
+      }
+      }
+      console.log(urlParameters);
     return urlParameters;
-  }
+    }
 }
