@@ -19,7 +19,7 @@ export class MenuFilterComponent implements OnInit {
   }
 
   addFilter(filter, value) {
-    this.filters[filter] = value;
+    this.filters[filter].data = value;
     this.onNewFilter.emit(this.filters);
   }
 
