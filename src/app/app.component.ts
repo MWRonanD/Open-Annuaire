@@ -13,10 +13,11 @@ import {FirmApiService} from './firm-api.service';
 export class AppComponent implements OnInit {
   params = '';
   screenWidth: number;
+  numberCompanies: number;
 
 
 
-  constructor(private  sendUrlService: SendUrlService, router: Router) {
+  constructor(private  sendUrlService: SendUrlService, router: Router, private firmApiService: FirmApiService) {
     // set screenWidth on page load
     this.screenWidth = window.innerWidth;
     window.onresize = () => {
@@ -42,6 +43,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.sendUrlService.sendUrl(this.params);
+    this.firmApiService.searchCompanies('',0).subscribe(data => {
+      this.numberCompanies = data.nhits;
+    });
   }
 
 }

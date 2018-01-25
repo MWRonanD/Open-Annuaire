@@ -5,7 +5,7 @@
 </mat-toolbar>
 <mat-toolbar class="example-header2" fxLayout="row">
   <div class="row">
-    <p class="center col-md-3">10 848 086 entreprises</p>
+    <p class="center col-md-3">{{numberCompanies | number:'':'fr'}} entreprises</p>
     <div class="margin">
       <a mat-button routerLink="/tableau" routerLinkActive="active" class="col-xs-3">Tableau</a>
       <a mat-button routerLink="/maps" routerLinkActive="active" class="col-xs-3">Carte</a>
