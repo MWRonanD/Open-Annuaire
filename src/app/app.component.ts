@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Filter} from './Model/Filter';
+import {Filter, Filters} from './Model/Filter';
 import {SendUrlService} from './send-url.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {FirmApiService} from './firm-api.service';
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
     this.sendUrlService.sendUrl(this.params);
   }
 
-  convertFilterToCompany(filter: Filter) {
+  convertFilterToCompany(filter: Filters) {
     this.params = this.sendUrlService.getUrlParameters(filter);
     this.sendUrlService.sendUrl(this.params);
   }
