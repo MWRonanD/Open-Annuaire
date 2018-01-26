@@ -19,6 +19,9 @@
   & span {
     color: white;
   }
+  & .badge-yellow {
+    background-color: $filterColor;
+  }
 }
 
 .green-line {

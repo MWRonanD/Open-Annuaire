@@ -6,7 +6,7 @@
     <h6>Activiter (code APE)</h6>
     <div *ngIf="filters.apet700">
       <i (click)="removeFilter('apet700')" class="material-icons">close</i>{{filters.apet700.data}}
-      <span class="badge badge-secondary">{{filters.apet700.nhits}}</span>
+      <div class="float-right"> <span class="badge badge-secondary badge-yellow">{{filters.apet700.nhits}}</span></div>
     </div>
     <mat-form-field *ngIf="filters.apet700 === undefined">
       <input #apeCodeInput (keyup.enter)="addFilter('apet700', apeCodeInput.value, $event); apeCodeInput.value = ''"
