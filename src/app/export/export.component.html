@@ -6,9 +6,9 @@
   </li>
   <li>
     JSON <a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=json&timezone=Europe/Berlin">Jeu de données entier</a>
-    JSON <a rel="nofollow" [href]=exportjson download="export.json">Seulement les {{companiesNumber}} enregistrements sélectionnés</a>
+    JSON <a (click)="exportJson()" rel="nofollow" href="">Seulement les {{companiesNumber}} enregistrements sélectionnés</a>
   </li>
   <li>
-    EXEL <a rel="nofollow" [href]=exportExcel>Jeu de données entier</a>
+    EXEL <a (click)="exportExcel()" rel="nofollow" href="" >Jeu de données entier</a>
   </li>
 </ul>

@@ -3,14 +3,12 @@ import {Company} from '../Model/Company';
 import {SendUrlService} from '../send-url.service';
 import {FirmApiService} from '../firm-api.service';
 import {Subscription} from 'rxjs/Subscription';
-import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 import {Angular2Csv} from 'angular2-csv';
-import {Injectable} from '@angular/core';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 
 const EXCEL_HTA = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-const EXCEL_EXTENSION = '.xlsx';
+const JSON_HTA = 'application/json;charset=UTF-8';
 
 @Component({
   selector: 'app-export',
@@ -19,28 +17,20 @@ const EXCEL_EXTENSION = '.xlsx';
 })
 export class ExportComponent {
 
-  static XLS = 'xls';
-
   subscription: Subscription;
   companies: Company[];
-  exportjson: SafeUrl;
+  filename = 'Export';
   companiesNumber: number;
 
 
-  constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService, private sanitizer: DomSanitizer) {
+  constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService) {
     this.subscription = sendUrlService.getUrl().subscribe(data => {
-      console.log('xD');
-      firmApiService.searchCompanies(data, 10).subscribe((dataCompanies) => {
+      firmApiService.searchCompanies(data, -1).subscribe((dataCompanies) => {
         this.companies = firmApiService.convertDataToCompanies(dataCompanies);
-        this.exportjson = this.exportJson(this.companies);
+        console.log(this.companies);
         this.companiesNumber = this.companies.length;
       });
     });
-  }
-
-  exportJson(companies: Company[]) {
-    const jsonChain = JSON.stringify(companies);
-    return this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(jsonChain));
   }
 
   exportCsv() {
@@ -68,15 +58,21 @@ export class ExportComponent {
   }
 
 
-  exportExcel(companies: Company[]) {
-
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(companies);
+  exportExcel() {
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.companies);
     const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
     const excelBuffer: any = XLSX.write(workbook, {bookType: 'xlsx', type: 'buffer'});
     const data: Blob = new Blob([excelBuffer], {
       type: EXCEL_HTA,
     });
-    FileSaver.saveAs(data, 'exportexel');
+    FileSaver.saveAs(data, this.filename + '.xlsx');
+  }
+
+  exportJson() {
+    const data: Blob = new Blob([JSON.stringify(this.companies)], {
+      type: JSON_HTA,
+    });
+    FileSaver.saveAs(data, this.filename + '.json');
   }
 
 
