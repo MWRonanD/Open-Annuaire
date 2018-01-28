@@ -1,7 +1,8 @@
-<mat-toolbar class="example-header" fxLayout="row">
-  <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
-  <div fxFlex="10"></div>
-  <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>
+<mat-toolbar class="example-header" >
+  <div class="row">
+    <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
+    <app-search-box  (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>
+  </div>
 </mat-toolbar>
 <mat-toolbar class="example-header2" fxLayout="row">
   <div class="row">
