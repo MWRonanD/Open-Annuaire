@@ -1,15 +1,20 @@
+export class Filters {
+  depet?: Filter;
+  sigle?: Filter;
+  codpos?: Filter;
+  siret?: Filter;
+  apet700?: Filter;
+  categorie?: Filter;
+  address?: Filter;
+  dcren?: Filter;
+  libtefen?: Filter;
+  libreg_new?: Filter;
+}
+
 export class Filter {
-  depet?: string;
-  sigle?: string;
-  codpos?: string;
-  siret?: string;
-  apet700?: string;
-  categorie?: string;
-  address?: string;
-  libcom?: string;
-  dcret?: Date;
-  libtefen?: string;
-  libreg_new?: string;
+  data?: string;
+  nhits?: number;
+  dateBefore?: boolean;
 }
 
 
