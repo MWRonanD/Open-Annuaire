@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
     this.filters = new Filters();
     this.params = '';
     this.searchString = null;
+    this.sendUrlService.sendUrl(this.params);
     this.firmApiService.searchCompanies(this.params, 0).subscribe(data => this.countResult = data.nhits);
   }
 
