@@ -21,15 +21,17 @@ export class SendUrlService {
   getUrlParameters(filter: Filters) {
     let urlParameters = '';
     const filterKeys = Object.keys(filter);
-    console.log(filterKeys);
     for (let i = 0; i < filterKeys.length; i++) {
-      urlParameters = urlParameters + filterKeys[i] + ':' + filter[filterKeys[i]].data;
-      console.log(filter[filterKeys[i]]);
+      if (filter[filterKeys[i]].dateBefore !== undefined) {
+        const afterBefore = filter[filterKeys[i]].dateBefore ? '<' : '>';
+        urlParameters = urlParameters + filterKeys[i] + afterBefore + filter[filterKeys[i]].data;
+      } else {
+        urlParameters = urlParameters + filterKeys[i] + ':' + filter[filterKeys[i]].data;
+      }
       if (i !== filterKeys.length - 1) {
         urlParameters = urlParameters + ' AND ';
       }
-      }
-      console.log(urlParameters);
-    return urlParameters;
     }
+    return urlParameters;
+  }
 }

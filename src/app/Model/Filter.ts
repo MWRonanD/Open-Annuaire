@@ -6,8 +6,7 @@ export class Filters {
   apet700?: Filter;
   categorie?: Filter;
   address?: Filter;
-  libcom?: Filter;
-  dcret?: Filter;
+  dcren?: Filter;
   libtefen?: Filter;
   libreg_new?: Filter;
 }
@@ -15,7 +14,7 @@ export class Filters {
 export class Filter {
   data?: string;
   nhits?: number;
-  isLoaging? = true;
+  dateBefore?: boolean;
 }
 
 

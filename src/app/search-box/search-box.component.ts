@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {Filter} from '../Model/Filter';
 
 
@@ -9,15 +9,17 @@ import {Filter} from '../Model/Filter';
 })
 export class SearchBoxComponent implements OnInit {
   @Output() onSearchCompanyBy = new EventEmitter<string>();
-  filter: Filter = {};
+  @Input() searchString: string;
 
   constructor() {
   }
 
   ngOnInit() {
+    this.searchString = '';
   }
 
   searchCompany(value) {
+    console.log(value);
     this.onSearchCompanyBy.emit(value);
   }
 

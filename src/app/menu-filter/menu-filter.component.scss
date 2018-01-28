@@ -16,10 +16,8 @@
 
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
-    color: white;
-  }
   & .badge-yellow {
+    color: white;
     background-color: $filterColor;
   }
 }
@@ -37,8 +35,9 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
+  & .badge-green {
     color: white;
+    background-color: $filterColor;
   }
 }
 
@@ -55,8 +54,9 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
+  & .badge-dark-purple {
     color: white;
+    background-color: $filterColor;
   }
 }
 
@@ -73,8 +73,9 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
+  & .badge-purple {
     color: white;
+    background-color: $filterColor;
   }
 }
 
@@ -91,8 +92,9 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
+  & .badge-blue {
     color: white;
+    background-color: $filterColor;
   }
 }
 
@@ -109,8 +111,9 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
+  & .badge-dark-blue {
     color: white;
+    background-color: $filterColor;
   }
 }
 
@@ -127,8 +130,9 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
+  & .badge-pink {
     color: white;
+    background-color: $filterColor;
   }
 }
 
@@ -145,8 +149,9 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & span {
+  & .badge-orange {
     color: white;
+    background-color: $filterColor;
   }
 }
 
@@ -161,16 +166,22 @@
     font-size: 12px;
     margin-left: 25px;
   }
-  & h3 {
-    margin-left: 11px;
-    color: #2569b0;
-  }
   mat-form-field {
     &.mat-form-field {
       font-size: 13px;
       width: 100%;
     }
   }
+
 }
 
+
+.result {
+  vertical-align: center;
+  background-color: whitesmoke;
+  h3 {
+    color: #2569b0;
+    font-size:20px;
+  }
+}
 
