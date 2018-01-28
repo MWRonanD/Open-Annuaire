@@ -13,7 +13,7 @@ export interface CompanyInterface {
     libcom: string;
     codpos: string;
     sigle: string; // Statut juridique
-    dcret: Date; // Date de création
+    dcren: Date; // Date de création
     libtefen: string;
     libreg_new: string;
     coordonnees: [number];

@@ -1,5 +1,5 @@
 <form #searchFirmForm="ngForm">
   <mat-form-field >
-      <input (keyup.enter)="searchCompany(value)" type="text" [(ngModel)]="value" name="searchCompany" matInput placeholder="Nom de l'enreprise, n° de SIRET, activité, nom du dirigeant...">
+      <input (keyup.enter)="searchCompany(searchString)" type="text" [(ngModel)]="searchString" name="searchCompany" matInput placeholder="Nom de l'enreprise, n° de SIRET, activité, nom du dirigeant...">
   </mat-form-field>
 </form>

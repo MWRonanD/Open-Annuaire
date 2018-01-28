@@ -2,7 +2,7 @@ import {EventEmitter, Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {Company} from './Model/Company';
 import {Observable} from 'rxjs/Observable';
-import {Filter} from './Model/Filter';
+import {Filter, Filters} from './Model/Filter';
 
 @Injectable()
 export class SendUrlService {
@@ -18,12 +18,19 @@ export class SendUrlService {
     return this.subject.asObservable();
   }
 
-  getUrlParameters(filter: Filter) {
+  getUrlParameters(filter: Filters) {
     let urlParameters = '';
     const filterKeys = Object.keys(filter);
-
     for (let i = 0; i < filterKeys.length; i++) {
-      urlParameters = urlParameters + filterKeys[i] + ':' + filter[filterKeys[i]] + ';';
+      if (filter[filterKeys[i]].dateBefore !== undefined) {
+        const afterBefore = filter[filterKeys[i]].dateBefore ? '<' : '>';
+        urlParameters = urlParameters + filterKeys[i] + afterBefore + filter[filterKeys[i]].data;
+      } else {
+        urlParameters = urlParameters + filterKeys[i] + ':' + filter[filterKeys[i]].data;
+      }
+      if (i !== filterKeys.length - 1) {
+        urlParameters = urlParameters + ' AND ';
+      }
     }
     return urlParameters;
   }

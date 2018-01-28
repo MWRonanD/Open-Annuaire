@@ -1,87 +1,96 @@
-
-  <div class="filter" fxFlex="5">
-    <h3><span>216</span> Résultats</h3>
-  </div>
   <div class="yellow-line filter" fxFlex>
     <h6>Activiter (code APE)</h6>
     <div *ngIf="filters.apet700">
-      <i (click)="removeFilter('apet700')" class="material-icons">close</i><span>{{filters.apet700}}</span>
+      <i (click)="removeFilter('apet700')" class="material-icons">close</i>{{filters.apet700.data}}
+      <div class="float-right"> <span class="badge badge-yellow">{{filters.apet700.nhits}}</span></div>
     </div>
     <mat-form-field *ngIf="filters.apet700 === undefined">
-      <input #apeCodeInput (keyup.enter)="addFilter('apet700', apeCodeInput.value, $event); apeCodeInput.value = ''"
+      <input #apeCodeInput (keyup.enter)="addFilter('apet700', apeCodeInput.value); apeCodeInput.value = ''"
              matInput name="apeCodeFilter" type="text" placeholder="Ajouter une activité"/>
     </mat-form-field>
   </div>
   <div class="green-line filter" fxFlex>
     <h6>Catégorie d'entreprise</h6>
     <div *ngIf="filters.categorie">
-      <i (click)="removeFilter('categorie')" class="material-icons">close</i><span>{{filters.categorie}}</span>
+      <i (click)="removeFilter('categorie')" class="material-icons">close</i>{{filters.categorie.data}}
+      <div class="float-right"><span class="badge badge-green">{{filters.categorie.nhits}}</span></div>
     </div>
     <mat-form-field *ngIf="filters.categorie === undefined">
-      <input #categInput (keyup.enter)="addFilter('categorie', categInput.value, $event); categInput.value = ''"
+      <input #categInput (keyup.enter)="addFilter('categorie', categInput.value); categInput.value = ''"
              matInput name="apeCodeFilter" type="text" placeholder="Ajouter une catégorie d'entreprise"/>
     </mat-form-field>
   </div>
   <div class="light-blue-line filter" fxFlex>
     <h6>Département</h6>
     <div *ngIf="filters.depet">
-      <i (click)="removeFilter('depet')" class="material-icons">close</i><span>{{filters.depet}}</span>
+      <i (click)="removeFilter('depet')" class="material-icons">close</i>{{filters.depet.data}}
+      <div class="float-right"><span class="badge badge-blue">{{filters.depet.nhits}}</span></div>
     </div>
     <mat-form-field *ngIf="filters.depet === undefined">
       <input #departmentInput
-             (keyup.enter)="addFilter('depet',departmentInput.value, $event); departmentInput.value = ''" matInput
+             (keyup.enter)="addFilter('depet',departmentInput.value); departmentInput.value = ''" matInput
              name="departmentFilter" type="text" placeholder="Ajouter un département"/>
     </mat-form-field>
   </div>
   <div class="dark-blue-line filter" fxFlex>
     <h6>Comunne</h6>
     <div *ngIf="filters.codpos">
-      <i (click)="removeFilter('codpos')" class="material-icons">close</i><span>{{filters.codpos}}</span>
+      <i (click)="removeFilter('codpos')" class="material-icons">close</i>{{filters.codpos.data}}
+      <div class="float-right"><span class="badge badge-dark-blue">{{filters.codpos.nhits}}</span></div>
     </div>
-    <mat-form-field *ngIf="filters.postal_code === undefined">
+    <mat-form-field *ngIf="filters.codpos === undefined">
       <input #postalCodeInput
-             (keyup.enter)="addFilter('codpos', postalCodeInput.value, $event); postalCodeInput.value = ''" matInput
+             (keyup.enter)="addFilter('codpos', postalCodeInput.value); postalCodeInput.value = ''" matInput
              name="postalCodeIFilter" type="text" placeholder="Ajouter une commune"/>
     </mat-form-field>
   </div>
   <div class="dark-purple-line filter" fxFlex>
-    <h6>Année de création</h6>
-    <div *ngIf="filters.dcret">
-      <i (click)="removeFilter('dcret')" class="material-icons">close</i><span>{{filters.dcret}}</span>
+    <h6>Date de création</h6>
+    <div *ngIf="filters.dcren">
+      <i (click)="removeFilter('dcren')" class="material-icons">close</i> {{filters.dcren.dateBefore ? "Avant" : "Après" }} le {{filters.dcren.data}}
+      <div class="float-right"><span class="badge badge-dark-purple">{{filters.dcren.nhits}}</span></div>
     </div>
-    <mat-form-field *ngIf="filters.dcret === undefined">
-      <input #dcretInput
-             (keyup.enter)="addFilter('dcret', dcretInput.value, $event); dcretInput.value = ''" matInput
-             name="postalCodeIFilter" type="text" placeholder="Ajouter une année de création"/>
+    <mat-form-field *ngIf="filters.dcren === undefined">
+      <mat-select #beforeAfterSelect placeholder="Avant/Après">
+      <mat-option [value]=true>Avant le</mat-option>
+        <mat-option [value]=false>Après le</mat-option>
+      </mat-select>
+      <input #dcrenInput matInput (dateInput)="addFilter('dcren', dcrenInput.value, beforeAfterSelect.value); dcrenInput.value = ''"
+             [matDatepicker]="picker" disabled placeholder="Ajouter une année de création">
+      <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+      <mat-datepicker #picker disabled="false"></mat-datepicker>
     </mat-form-field>
   </div>
   <div class="light-purple-line filter" fxFlex>
     <h6>Status juridique</h6>
     <div *ngIf="filters.sigle">
-      <i (click)="removeFilter('sigle')" class="material-icons">close</i><span>{{filters.sigle}}</span>
+      <i (click)="removeFilter('sigle')" class="material-icons">close</i>{{filters.sigle.data}}
+      <div class="float-right"><span class="badge badge-purple">{{filters.sigle.nhits}}</span></div>
     </div>
     <mat-form-field *ngIf="filters.sigle === undefined">
-      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value, $event); legalFormInput.value = ''"
+      <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value); legalFormInput.value = ''"
              matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
     </mat-form-field>
   </div>
   <div class="pink-line filter" fxFlex>
     <h6>Effectifs</h6>
     <div *ngIf="filters.libtefen">
-      <i (click)="removeFilter('libtefen')" class="material-icons">close</i><span>{{filters.libtefen}}</span>
+      <i (click)="removeFilter('libtefen')" class="material-icons">close</i>{{filters.libtefen.data}}
+      <div class="float-right"><span class="badge badge-pink">{{filters.libtefen.nhits}}</span></div>
     </div>
     <mat-form-field *ngIf="filters.libtefen === undefined">
-      <input #libtefenInput (keyup.enter)="addFilter('sigle', libtefenInput.value, $event); libtefenInput.value = ''"
+      <input #libtefenInput (keyup.enter)="addFilter('sigle', libtefenInput.value); libtefenInput.value = ''"
              matInput name="legalFormFilter" type="text" placeholder="Ajouter un effectif"/>
     </mat-form-field>
   </div>
   <div class="orange-line filter" fxFlex>
     <h6>Région</h6>
     <div *ngIf="filters.libreg_new">
-      <i (click)="removeFilter('libreg_new')" class="material-icons">close</i><span>{{filters.libreg_new}}</span>
+      <i (click)="removeFilter('libreg_new')" class="material-icons">close</i>{{filters.libreg_new.data}}
+      <div class="float-right"><span class="badge badge-orange">{{filters.libreg_new.nhits}}</span></div>
     </div>
     <mat-form-field *ngIf="filters.libreg_new === undefined">
-      <input #libregInput (keyup.enter)="addFilter('libreg_new', libregInput.value, $event); libregInput.value = ''"
+      <input #libregInput (keyup.enter)="addFilter('libreg_new', libregInput.value); libregInput.value = ''"
              matInput name="legalFormFilter" type="text" placeholder="Ajouter une région"/>
     </mat-form-field>
   </div>

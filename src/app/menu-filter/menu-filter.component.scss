@@ -1,33 +1,158 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
 .yellow-line {
-  border-left: 4px solid #ff9800;
+  $filterColor: #FFC107;
+  $candy-app-primary: mat-palette($mat-orange);
+  $candy-app-accent: mat-palette($mat-orange);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-yellow {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .green-line {
-  border-left: 4px solid #9acb00;
+  $filterColor: #8BC34A;
+  $candy-app-primary: mat-palette($mat-light-green);
+  $candy-app-accent: mat-palette($mat-light-green);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-green {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .dark-purple-line {
-  border-left: 4px solid #6534CC;
+  $filterColor: #673AB7;
+  $candy-app-primary: mat-palette($mat-deep-purple);
+  $candy-app-accent: mat-palette($mat-deep-purple);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-dark-purple {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .light-purple-line {
-  border-left: 4px solid #a83acd;
+  $filterColor: #9C27B0;
+  $candy-app-primary: mat-palette($mat-purple);
+  $candy-app-accent: mat-palette($mat-purple);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-purple {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .light-blue-line {
-  border-left: 4px solid #1ba0e5;
+  $filterColor: #03A9F4;
+  $candy-app-primary: mat-palette($mat-light-blue);
+  $candy-app-accent: mat-palette($mat-light-blue);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-blue {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .dark-blue-line {
-  border-left: 4px solid #3567ca;
+  $filterColor: #3F51B5;
+  $candy-app-primary: mat-palette($mat-indigo);
+  $candy-app-accent: mat-palette($mat-indigo);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-dark-blue {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .pink-line {
-  border-left: 4px solid #cb308b;
+  $filterColor: #E91E63;
+  $candy-app-primary: mat-palette($mat-pink);
+  $candy-app-accent: mat-palette($mat-pink);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-pink {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .orange-line {
-  border-left: 4px solid #cc5200;
+  $filterColor: #F44336;
+  $candy-app-primary: mat-palette($mat-red);
+  $candy-app-accent: mat-palette($mat-red);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-orange {
+    color: white;
+    background-color: $filterColor;
+  }
 }
 
 .filter {
@@ -41,19 +166,22 @@
     font-size: 12px;
     margin-left: 25px;
   }
-  & h3 {
-    margin-left: 11px;
+  mat-form-field {
+    &.mat-form-field {
+      font-size: 13px;
+      width: 100%;
+    }
+  }
+
+}
+
+
+.result {
+  vertical-align: center;
+  background-color: whitesmoke;
+  h3 {
     color: #2569b0;
-  }
-
-  & span {
-    color: #286cad;
+    font-size:20px;
   }
 }
 
-mat-form-field {
-  &.mat-form-field {
-    font-size: 13px;
-    width: 100%;
-  }
-}

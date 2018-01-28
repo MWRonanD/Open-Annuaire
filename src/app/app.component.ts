@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Filter} from './Model/Filter';
+import {Filter, Filters} from './Model/Filter';
 import {SendUrlService} from './send-url.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {FirmApiService} from './firm-api.service';
@@ -13,10 +13,13 @@ import {FirmApiService} from './firm-api.service';
 export class AppComponent implements OnInit {
   params = '';
   screenWidth: number;
+  numberCompanies: number;
+  countResult: number;
+  filters: Filters = {};
+  searchString: string;
 
 
-
-  constructor(private  sendUrlService: SendUrlService, router: Router) {
+  constructor(private  sendUrlService: SendUrlService, router: Router, private firmApiService: FirmApiService) {
     // set screenWidth on page load
     this.screenWidth = window.innerWidth;
     window.onresize = () => {
@@ -31,17 +34,32 @@ export class AppComponent implements OnInit {
   }
 
   searchCompanyBy(value: string) {
-    this.params = value;
-    this.sendUrlService.sendUrl(this.params);
+    this.searchString = value;
+    this.sendUrlService.sendUrl(this.searchString);
+    this.firmApiService.searchCompanies(this.searchString, 0).subscribe(data => this.countResult = data.nhits);
+    this.filters =  new Filters();
   }
 
-  convertFilterToCompany(filter: Filter) {
+  convertFilterToCompany(filter: Filters) {
+    this.searchString = null;
     this.params = this.sendUrlService.getUrlParameters(filter);
     this.sendUrlService.sendUrl(this.params);
+    this.firmApiService.searchCompanies(this.params, 0).subscribe(data => this.countResult = data.nhits);
+  }
+
+  removeFilter() {
+    this.filters = new Filters();
+    this.params = '';
+    this.searchString = null;
+    this.firmApiService.searchCompanies(this.params, 0).subscribe(data => this.countResult = data.nhits);
   }
 
   ngOnInit() {
     this.sendUrlService.sendUrl(this.params);
+    this.firmApiService.searchCompanies('', 0).subscribe(data => {
+      this.countResult = data.nhits;
+      this.numberCompanies = data.nhits;
+    });
   }
 
 }

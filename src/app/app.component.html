@@ -1,11 +1,11 @@
 <mat-toolbar class="example-header" fxLayout="row">
   <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
   <div fxFlex="10"></div>
-  <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)"></app-search-box>
+  <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)" [searchString]="searchString"></app-search-box>
 </mat-toolbar>
 <mat-toolbar class="example-header2" fxLayout="row">
   <div class="row">
-    <p class="center col-md-3">10 848 086 entreprises</p>
+    <p class="center col-md-3">{{numberCompanies | number:'':'fr'}} entreprises</p>
     <div class="margin">
       <a mat-button routerLink="/tableau" routerLinkActive="active" class="col-xs-3">Tableau</a>
       <a mat-button routerLink="/maps" routerLinkActive="active" class="col-xs-3">Carte</a>
@@ -15,10 +15,19 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="example-container mat-elevation-z16">
-  <mat-sidenav #sidenav  [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'" opened="true" class="example-sidenav"
+  <mat-sidenav #sidenav [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'" opened="true"
+               class="example-sidenav"
                [fixedInViewport]="false">
-    <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" fxLayout="column"
-                     class="menu-filter"></app-menu-filter>
+    <div fxLayout="column" fxFlex>
+      <div class="result" fxFlex>
+        <div fxLayout="row">
+          <h3 fxFlex="70">{{countResult | number:'':'fr'}} Résultats</h3>
+          <div fxFlex></div>
+          <i (click)="removeFilter()" class="material-icons">close</i></div>
+      </div>
+      <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" fxLayout="column" [filters]="filters"
+                       class="menu-filter"></app-menu-filter>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <ngx-loading-bar></ngx-loading-bar>
