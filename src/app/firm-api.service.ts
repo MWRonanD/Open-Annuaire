@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {FirmApiCompaniesInterface} from './firm-api-interface';
 import {Observable} from 'rxjs/Observable';
+import {Company} from './Model/Company';
 
 @Injectable()
 export class FirmApiService {
@@ -20,5 +21,27 @@ export class FirmApiService {
     }
     firmUrl = firmUrl + '&q=' + param;
     return this.http.get(firmUrl).map(response => response as FirmApiCompaniesInterface);
+  }
+
+  convertDataToCompanies(data) {
+    const companies: Company[] = [];
+    for (let i = 0; i < data.records.length; i++) {
+      const company = new Company(
+        data.records[i].fields.siret,
+        data.records[i].fields.apet700,
+        data.records[i].fields.l1_declaree,
+        data.records[i].fields.categorie,
+        data.records[i].fields.depet,
+        data.records[i].fields.l4_normalisee,
+        data.records[i].fields.libcom,
+        data.records[i].fields.codpos,
+        data.records[i].fields.sigle,
+        data.records[i].fields.dcret,
+        data.records[i].fields.libtefen,
+        data.records[i].fields.libreg_new,
+        data.records[i].fields.coordonnees);
+      companies.push(company);
+    }
+    return companies;
   }
 }

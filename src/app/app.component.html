@@ -1,7 +1,8 @@
-<mat-toolbar class="example-header" fxLayout="row">
-  <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
-  <div fxFlex="10"></div>
+<mat-toolbar class="example-header" >
+  <div class="row">
+    <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
   <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)" [searchString]="searchString"></app-search-box>
+  </div>
 </mat-toolbar>
 <mat-toolbar class="example-header2" fxLayout="row">
   <div class="row">
@@ -9,7 +10,7 @@
     <div class="margin">
       <a mat-button routerLink="/tableau" routerLinkActive="active" class="col-xs-3">Tableau</a>
       <a mat-button routerLink="/maps" routerLinkActive="active" class="col-xs-3">Carte</a>
-      <a mat-button routerLink="#" routerLinkActive="active" class="col-xs-3">Export des données</a>
+      <a mat-button routerLink="/export" routerLinkActive="active" class="col-xs-3">Export des données</a>
     </div>
   </div>
 </mat-toolbar>

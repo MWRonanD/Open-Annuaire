@@ -21,6 +21,7 @@ import { SearchBoxComponent } from './search-box/search-box.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MapsComponent } from './maps/maps.component';
 import {SendUrlService} from './send-url.service';
+import { ExportComponent } from './export/export.component';
 import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
@@ -35,6 +36,7 @@ registerLocaleData(localeFr, 'fr');
     MenuFilterComponent,
     SearchBoxComponent,
     MapsComponent,
+    ExportComponent,
   ],
   imports: [
     FlexLayoutModule,
