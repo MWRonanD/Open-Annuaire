@@ -1,14 +1,28 @@
 <h3>Formats de fichiers plats</h3>
-<ul>
-  <li>
-    CSV <a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=csv&timezone=Europe/Berlin">Jeu de données entier</a>
-    CSV <a  (click)="exportCsv()" rel="nofollow" href="">Seulement les {{companiesNumber}} enregistrements sélectionnés</a>
-  </li>
-  <li>
-    JSON <a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=json&timezone=Europe/Berlin">Jeu de données entier</a>
-    JSON <a (click)="exportJson()" rel="nofollow" href="">Seulement les {{companiesNumber}} enregistrements sélectionnés</a>
-  </li>
-  <li>
-    EXEL <a (click)="exportExcel()" rel="nofollow" href="" >Jeu de données entier</a>
-  </li>
-</ul>
+<div class="row">
+  <div class="col-xs-12 width">CSV</div>
+    <div class="col-xs-12">
+      <a mat-button rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=csv&timezone=Europe/Berlin"><i class="material-icons">archive</i>Jeu de données entier</a>
+    </div>
+    <div class="col-xs-12">
+      <button mat-button (click)="exportCsv()"><i class="material-icons">archive</i>Seulement les {{companiesNumber}} enregistrements sélectionnés</button>
+    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 width">JSON</div>
+    <div class="col-xs-12">
+      <a mat-button rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=json&timezone=Europe/Berlin"><i class="material-icons">archive</i>Jeu de données entier</a>
+    </div>
+    <div class="col-xs-12">
+      <a mat-button (click)="exportJson()"><i class="material-icons">archive</i>Seulement les {{companiesNumber}} enregistrements sélectionnés</a>
+    </div>
+</div>
+<div class="row">
+  <div class="col-xs-12 width">EXEL</div>
+    <div class="col-xs-12">
+      <a mat-button rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=xls&timezone=Europe/Berlin&use_labels_for_header=true"><i class="material-icons">archive</i>Jeu de données entier</a>
+    </div>
+    <div class="col-xs-12">
+      <button mat-button (click)="exportExcel()"><i class="material-icons">archive</i>Seulement les {{companiesNumber}} enregistrements sélectionnés</button>
+    </div>
+</div>
