@@ -13,7 +13,7 @@ const JSON_HTA = 'application/json;charset=UTF-8';
 @Component({
   selector: 'app-export',
   templateUrl: './export.component.html',
-  styleUrls: ['./export.component.css']
+  styleUrls: ['./export.component.scss']
 })
 export class ExportComponent {
 
