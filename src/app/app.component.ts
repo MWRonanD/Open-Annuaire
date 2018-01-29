@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   screenWidth: number;
   numberCompanies: number;
   countResult: number;
-  filters: Filters = {};
+  filters = new Filters();
   searchString: string;
 
 
