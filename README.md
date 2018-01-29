@@ -1,6 +1,8 @@
 # OpenAnnuaire
 
-Angular Group class project calling the Api OpenDataSource
+Angular Group class project calling the Api OpenDataSource.
+
+A [Demo](https://mwalexisl.github.io/Open-Annuaire) is available.
 
 ## Installation
 
