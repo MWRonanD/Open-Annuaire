@@ -94,16 +94,20 @@ export class MenuFilterComponent implements OnInit {
 
   addFilter(filter, value, dateBefore?) {
     let param;
-    this.filters[filter] = new Filter();
-    this.filters[filter].data = value;
+    if (this.filters[filter] === undefined) {
+      this.filters[filter] = [];
+    }
+      this.filters[filter].push(new Filter());
+    const i = this.filters[filter].length - 1;
+    this.filters[filter][i].data = value;
     if (dateBefore !== undefined) {
-      this.filters[filter].dateBefore = dateBefore;
+      this.filters[filter][i].dateBefore = dateBefore;
       param = dateBefore ? (filter + '<' + value) : (filter + '>' + value);
     } else {
       param = filter + ':' + value;
     }
     this.firmApiService.searchCompanies(param, 0).subscribe(data => {
-      this.filters[filter].nhits = data.nhits;
+      this.filters[filter][i].nhits = data.nhits;
     });
     this.onNewFilter.emit(this.filters);
   }
