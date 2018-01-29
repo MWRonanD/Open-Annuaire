@@ -23,7 +23,8 @@
         <div fxLayout="row">
           <h3 fxFlex="70">{{countResult | number:'':'fr'}} Résultats</h3>
           <div fxFlex></div>
-          <i (click)="removeFilter()" class="material-icons">close</i></div>
+          <a mat-button><i (click)="removeFilter()" class="material-icons">close</i></a>
+        </div>
       </div>
       <app-menu-filter (onNewFilter)="convertFilterToCompany($event)" fxLayout="column" [filters]="filters"
                        class="menu-filter"></app-menu-filter>
