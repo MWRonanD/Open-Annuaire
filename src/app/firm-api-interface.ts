@@ -12,9 +12,10 @@ export interface CompanyInterface {
     depet: string; // Departement
     libcom: string;
     codpos: string;
-    sigle: string; // Statut juridique
+    libnj: string; // Statut juridique
     dcren: Date; // Date de création
-    libtefen: string;
+    libtefet: string; // Effects
+    libtca: string; // CA
     libreg_new: string;
     coordonnees: [number];
     l4_normalisee: string; // Adresse

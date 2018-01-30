@@ -19,7 +19,6 @@ export class SearchBoxComponent implements OnInit {
   }
 
   searchCompany(value) {
-    console.log(value);
     this.onSearchCompanyBy.emit(value);
   }
 

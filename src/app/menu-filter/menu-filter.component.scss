@@ -3,7 +3,7 @@
 @include mat-core();
 
 .yellow-line {
-  $filterColor: #FFC107;
+  $filterColor: #ff9800;
   $candy-app-primary: mat-palette($mat-orange);
   $candy-app-accent: mat-palette($mat-orange);
 
@@ -55,6 +55,25 @@
   color: $filterColor;
   border-left: 4px solid $filterColor;
   & .badge-dark-purple {
+    color: white;
+    background-color: $filterColor;
+  }
+}
+
+.red-line {
+  $filterColor: #f44336;
+  $candy-app-primary: mat-palette($mat-red);
+  $candy-app-accent: mat-palette($mat-red);
+
+  // The warn palette is optional (defaults to red).
+  $candy-app-warn: mat-palette($mat-red);
+
+  // Create the theme object (a Sass map containing all of the palettes).
+  $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+  @include angular-material-theme($candy-app-theme);
+  color: $filterColor;
+  border-left: 4px solid $filterColor;
+  & .badge-red {
     color: white;
     background-color: $filterColor;
   }
@@ -137,9 +156,9 @@
 }
 
 .orange-line {
-  $filterColor: #F44336;
-  $candy-app-primary: mat-palette($mat-red);
-  $candy-app-accent: mat-palette($mat-red);
+  $filterColor: #ff5722;
+  $candy-app-primary: mat-palette($mat-deep-orange);
+  $candy-app-accent: mat-palette($mat-deep-orange);
 
   // The warn palette is optional (defaults to red).
   $candy-app-warn: mat-palette($mat-red);
@@ -157,20 +176,23 @@
 
 .filter {
   padding: 10px 10px 10px 10px;
-  vertical-align: center;
   flex: 1;
   background-color: whitesmoke;
-
-  & h4 {
-    color: dimgrey;
-    font-size: 12px;
-    margin-left: 25px;
+  & p {
+    font-size: 10px;
+  }
+  & h6 {
+    margin: 0;
+    font-size: 15px;
   }
   mat-form-field {
     &.mat-form-field {
       font-size: 13px;
       width: 100%;
     }
+  }
+  .badge {
+    margin-right: 12px;
   }
 
 }
