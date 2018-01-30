@@ -3,7 +3,7 @@
 @include mat-core();
 
 .yellow-line {
-  $filterColor: #FFC107;
+  $filterColor: #ff9800;
   $candy-app-primary: mat-palette($mat-orange);
   $candy-app-accent: mat-palette($mat-orange);
 
@@ -73,7 +73,7 @@
   @include angular-material-theme($candy-app-theme);
   color: $filterColor;
   border-left: 4px solid $filterColor;
-  & .badge-dark-purple {
+  & .badge-red {
     color: white;
     background-color: $filterColor;
   }
@@ -178,17 +178,21 @@
   padding: 10px 10px 10px 10px;
   flex: 1;
   background-color: whitesmoke;
-
-  & h4 {
-    color: dimgrey;
-    font-size: 12px;
-    margin-left: 25px;
+  & p {
+    font-size: 10px;
+  }
+  & h6 {
+    margin: 0;
+    font-size: 15px;
   }
   mat-form-field {
     &.mat-form-field {
       font-size: 13px;
       width: 100%;
     }
+  }
+  .badge {
+    margin-right: 12px;
   }
 
 }

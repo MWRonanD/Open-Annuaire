@@ -1,13 +1,22 @@
 <!-- Activité (code APE) -->
 
 <div class="yellow-line filter" fxFlex>
-  <h6>Activité (code APE)</h6>
-  <div fxLayout="row" *ngIf="filters.apet700.filtre">
-    <i fxFlex="9" (click)="removeFilter('apet700')" class="material-icons">close</i>
-    <h6 fxFlex>{{filters.apet700.data}}</h6>
-    <div><span class="badge badge-yellow">{{filters.apet700.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Activité (code APE)</h6>
+    <button mat-icon-button color="accent" (click)="filters.apet700.visible = !filters.apet700.visible">
+      <mat-icon class="mat-icon">{{filters.apet700.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.apet700 === undefined">
+  <div *ngIf="filters.apet700.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.apet700.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('apet700', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlex fxFlexAlign="center">{{leFilter.data}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-yellow">{{leFilter.nhits | number:'':'fr'}}</span></div>
+    </div>
+  </div>
+  <mat-form-field *ngIf="filters.apet700.visible">
     <input #apeCodeInput (keyup.enter)="addFilter('apet700', apeCodeInput.value); apeCodeInput.value = ''"
            matInput name="apeCodeFilter" type="text" placeholder="Ajouter une activité"/>
   </mat-form-field>
@@ -18,19 +27,31 @@
 
 
 <div class="green-line filter" fxFlex>
-  <h6>Catégorie d'entreprise</h6>
-  <div fxLayout="row" *ngIf="filters.categorie.filtre">
-    <i fxFlex="9" (click)="removeFilter('categorie')" class="material-icons">close</i>
-    <h6 fxFlex>{{findEffectif('categorie',filters.categorie.data)}}</h6>
-    <div><span class="badge badge-green">{{filters.categorie.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Catégorie d'entreprise</h6>
+    <button mat-icon-button color="accent" (click)="filters.categorie.visible = !filters.categorie.visible">
+      <mat-icon class="mat-icon">{{filters.categorie.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.categorie.filtre === undefined">
+  <div *ngIf="filters.categorie.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.categorie.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('categorie', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlexAlign="center" fxFlex>{{findEffectif('categorie',leFilter.data)}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-green">{{leFilter.nhits | number:'':'fr'}}</span></div>
+    </div>
+  </div>
+  <mat-form-field *ngIf="filters.categorie.visible">
     <mat-select #categInput placeholder="Ajouter une catégorie d'entreprise"
                 (valueChange)="addFilter('categorie', categInput.value); categInput.value = ''">
-      <mat-option *ngFor="let choice of categories" [value]=choice.value>{{choice.libelle}}</mat-option>
+      <mat-option *ngFor="let choice of categories" [disabled]="checkIfFilterExists('categorie', choice.value)"
+                  [value]=choice.value>{{choice.libelle}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
+
 
 <!-- Département -->
 
@@ -39,14 +60,16 @@
   <div fxLayout="row">
     <h6 fxFlex fxFlexAlign="center">Département</h6>
     <button mat-icon-button color="accent" (click)="filters.depet.visible = !filters.depet.visible">
-      <mat-icon class="mat-icon">{{filters.depet.visible ? 'remove' : 'add'}}</mat-icon>
+      <mat-icon class="mat-icon">{{filters.depet.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
     </button>
   </div>
-  <div *ngIf="filters.depet.filtre">
-    <div fxLayout="row" *ngFor="let depet of filters.depet.filter; let i of index">
-      <button mat-icon-button fxFlex="9" (click)="removeFilter('depet', i)"><mat-icon>close</mat-icon></button>
-      <h6 fxFlex>{{depet.data}}</h6>
-      <div><span class="badge badge-blue">{{depet.nhits | number:'':'fr'}}</span></div>
+  <div *ngIf="filters.depet.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.depet.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('depet', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlex fxFlexAlign="center">{{leFilter.data}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-blue">{{leFilter.nhits | number:'':'fr'}}</span></div>
     </div>
   </div>
   <mat-form-field *ngIf="filters.depet.visible">
@@ -61,13 +84,22 @@
 
 
 <div class="dark-blue-line filter" fxFlex>
-  <h6>Comunne (Code postal)</h6>
-  <div fxLayout="row" *ngIf="filters.codpos.filtre">
-    <i fxFlex="9" (click)="removeFilter('codpos')" class="material-icons">close</i>
-    <h6 fxFlex>{{filters.codpos.data}}</h6>
-    <div><span class="badge badge-dark-blue">{{filters.codpos.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Comunne (Code postal)</h6>
+    <button mat-icon-button color="accent" (click)="filters.codpos.visible = !filters.codpos.visible">
+      <mat-icon class="mat-icon">{{filters.codpos.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.codpos === undefined">
+  <div *ngIf="filters.codpos.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.codpos.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('codpos', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlex fxFlexAlign="center">{{leFilter.data}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-dark-blue">{{leFilter.nhits | number:'':'fr'}}</span></div>
+    </div>
+  </div>
+  <mat-form-field *ngIf="filters.codpos.visible">
     <input #postalCodeInput
            (keyup.enter)="addFilter('codpos', postalCodeInput.value); postalCodeInput.value = ''" matInput
            name="postalCodeIFilter" type="text" placeholder="Ajouter une commune"/>
@@ -79,13 +111,22 @@
 
 
 <div class="dark-purple-line filter" fxFlex>
-  <h6>Date de création</h6>
-  <div fxLayout="row" *ngIf="filters.dcren.filtre">
-    <i fxFlex="9" (click)="removeFilter('dcren')" class="material-icons">close</i>
-    <h6 fxFlex>{{filters.dcren.dateBefore ? "Avant" : "Après" }} le {{filters.dcren.data}}</h6>
-    <div><span class="badge badge-dark-purple">{{filters.dcren.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Date de création</h6>
+    <button mat-icon-button color="accent" (click)="filters.dcren.visible = !filters.dcren.visible">
+      <mat-icon class="mat-icon">{{filters.dcren.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.dcren === undefined">
+  <div *ngIf="filters.dcren.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.dcren.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('dcren', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlex fxFlexAlign="center">{{leFilter.dateBefore ? "Avant" : "Après" }} le {{leFilter.data}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-dark-purple">{{leFilter.nhits | number:'':'fr'}}</span></div>
+    </div>
+  </div>
+  <mat-form-field *ngIf="filters.dcren.visible">
     <mat-select #beforeAfterSelect placeholder="Avant/Après">
       <mat-option [value]=true>Avant le</mat-option>
       <mat-option [value]=false>Après le</mat-option>
@@ -94,22 +135,32 @@
            (dateInput)="addFilter('dcren', dcrenInput.value, beforeAfterSelect.value); dcrenInput.value = ''"
            [matDatepicker]="picker" disabled placeholder="Ajouter une année de création">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker [disabled]="!beforeAfterSelect.value"></mat-datepicker>
+    <mat-datepicker #picker [disabled]="beforeAfterSelect.value === undefined"></mat-datepicker>
   </mat-form-field>
 </div>
+
 
 <!-- Status juridique -->
 
 
 <div class="light-purple-line filter" fxFlex>
-  <h6>Status juridique</h6>
-  <div fxLayout="row" *ngIf="filters.sigle.filtre">
-    <i fxFlex="9" (click)="removeFilter('sigle')" class="material-icons">close</i>
-    <h6 fxFlex>{{filters.sigle.data}}</h6>
-    <div><span class="badge badge-purple">{{filters.sigle.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Status juridique</h6>
+    <button mat-icon-button color="accent" (click)="filters.libnj.visible = !filters.libnj.visible">
+      <mat-icon class="mat-icon">{{filters.libnj.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.sigle === undefined">
-    <input #legalFormInput (keyup.enter)="addFilter('sigle', legalFormInput.value); legalFormInput.value = ''"
+  <div *ngIf="filters.libnj.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.libnj.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('libnj', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlex fxFlexAlign="center">{{leFilter.data}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-purple">{{leFilter.nhits | number:'':'fr'}}</span></div>
+    </div>
+  </div>
+  <mat-form-field *ngIf="filters.libnj.visible">
+    <input #legalFormInput (keyup.enter)="addFilter('libnj', legalFormInput.value); legalFormInput.value = ''"
            matInput name="legalFormFilter" type="text" placeholder="Ajouter un statut juridique"/>
   </mat-form-field>
 </div>
@@ -119,16 +170,27 @@
 
 
 <div class="pink-line filter" fxFlex>
-  <h6>Effectifs</h6>
-  <div fxLayout="row" *ngIf="filters.tefet.filtre">
-    <i fxFlex="9" (click)="removeFilter('tefet')" class="material-icons">close</i>
-    <h6 fxFlex>{{findEffectif('effectif', filters.tefet.data)}}</h6>
-    <div><span class="badge badge-pink">{{filters.tefet.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Effectifs</h6>
+    <button mat-icon-button color="accent" (click)="filters.tefet.visible = !filters.tefet.visible">
+      <mat-icon class="mat-icon">{{filters.tefet.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.tefet === undefined">
+  <div *ngIf="filters.tefet.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.tefet.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('tefet', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlexAlign="center" fxFlex>{{findEffectif('tefet',leFilter.data)}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-pink">{{leFilter.nhits | number:'':'fr'}}</span></div>
+    </div>
+  </div>
+  <mat-form-field *ngIf="filters.tefet.visible">
     <mat-select #tefetInput placeholder="Ajouter une tranche d'effectif"
                 (valueChange)="addFilter('tefet', tefetInput.value); tefetInput.value = ''">
-      <mat-option *ngFor="let choice of effectifs" [value]=choice.value>{{choice.libelle}}</mat-option>
+      <mat-option *ngFor="let choice of effectifs" [disabled]="checkIfFilterExists('tefet', choice.value)"
+                  [value]=choice.value>{{choice.libelle}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
@@ -138,16 +200,25 @@
 
 
 <div class="red-line filter" fxFlex>
-  <h6>Chiffre d'affaires</h6>
-  <div fxLayout="row" *ngIf="filters.tca.filtre">
-    <i fxFlex="9" (click)="removeFilter('tca')" class="material-icons">close</i>
-    <h6 fxFlex>{{revenues[filters.tca.data]}}</h6>
-    <div><span class="badge badge-dark-purple">{{filters.tca.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Chiffre d'affaires</h6>
+    <button mat-icon-button color="accent" (click)="filters.tca.visible = !filters.tca.visible">
+      <mat-icon class="mat-icon">{{filters.tca.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.tca === undefined">
+  <div fxLayout="row" *ngFor="let leFilter of filters.tca.filter;">
+    <button mat-icon-button (click)="removeFilter('tca')">
+      <mat-icon>close</mat-icon>
+    </button>
+    <h6 fxFlexAlign="center" fxFlex>{{revenues[leFilter.data]}}</h6>
+    <div fxFlexAlign="center"><span class="badge badge-red">{{leFilter.nhits | number:'':'fr'}}</span></div>
+  </div>
+  <mat-form-field *ngIf="filters.tca.visible">
     <mat-select #tcaInput placeholder="Ajouter une tranche de chiffre d'affaires"
                 (valueChange)="addFilter('tca', tcaInput.value); tcaInput.value = ''">
-      <mat-option *ngFor="let choice of revenues; let i = index" [value]=i>{{choice}}</mat-option>
+      <mat-option *ngFor="let choice of revenues; let i = index" [disabled]="checkIfFilterExists('tca', i)"
+                  [value]=i>{{choice}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </div>
@@ -157,15 +228,27 @@
 
 
 <div class="orange-line filter" fxFlex>
-  <h6>Région</h6>
-  <div fxLayout="row" *ngIf="filters.libreg_new.filtre">
-    <i fxFlex="9" (click)="removeFilter('libreg_new')" class="material-icons">close</i>
-    <h6 fxFlex>{{filters.libreg_new.data}}</h6>
-    <div><span class="badge badge-orange">{{filters.libreg_new.nhits | number:'':'fr'}}</span></div>
+  <div fxLayout="row">
+    <h6 fxFlex fxFlexAlign="center">Région</h6>
+    <button mat-icon-button color="accent" (click)="filters.libreg_new.visible = !filters.libreg_new.visible">
+      <mat-icon class="mat-icon">{{filters.libreg_new.visible ? 'remove_circle' : 'add_circle'}}</mat-icon>
+    </button>
   </div>
-  <mat-form-field *ngIf="filters.libreg_new === undefined">
+  <div *ngIf="filters.libreg_new.filter">
+    <div fxLayout="row" *ngFor="let leFilter of filters.libreg_new.filter; let i of index">
+      <button mat-icon-button (click)="removeFilter('libreg_new', i)">
+        <mat-icon>close</mat-icon>
+      </button>
+      <h6 fxFlex fxFlexAlign="center">{{leFilter.data}}</h6>
+      <div fxFlexAlign="center"><span class="badge badge-orange">{{leFilter.nhits | number:'':'fr'}}</span></div>
+    </div>
+  </div>
+  <mat-form-field *ngIf="filters.libreg_new.visible">
     <input #libregInput (keyup.enter)="addFilter('libreg_new', libregInput.value); libregInput.value = ''"
            matInput name="legalFormFilter" type="text" placeholder="Ajouter une région"/>
   </mat-form-field>
+</div>
+<div fxFlex class="filter">
+  <p>Ajoutez et cumulez les critères de recherche pour affiner votre recherche :</p>
 </div>
 

@@ -3,7 +3,7 @@ export class Filters {
     filter?: Filter[],
     visible?: boolean
   } = { visible: false};
-  sigle: {
+  libnj: {
     filter?: Filter[],
     visible?: boolean
   } = { visible: false};

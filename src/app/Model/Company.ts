@@ -13,7 +13,7 @@ export class Company {
   region?: string;
   coordonnees?: [number];
 
-  constructor(siret, apet700, name, categorie, depet, address, libcom, codpos, sigle, dcren, libtefen, libreg_new, coordonnees) {
+  constructor(siret, apet700, name, categorie, depet, address, libcom, codpos, libnj, dcren, libtefen, libreg_new, coordonnees) {
     this.siret = siret || null;
     this.ape = apet700 || null;
     this.name = name || null;
@@ -22,7 +22,7 @@ export class Company {
     this.address = address || null;
     this.city = libcom || null;
     this.zipCode = codpos || null;
-    this.legalForm = sigle || null;
+    this.legalForm = libnj || null;
     this.dateCreation = dcren || null;
     this.numberEmployees = libtefen || null;
     this.region = libreg_new || null;
