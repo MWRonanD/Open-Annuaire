@@ -17,7 +17,7 @@ export class MapsComponent implements OnInit {
   constructor(private sendUrlService: SendUrlService, private sanitizer: DomSanitizer) {
     this.subscription = this.sendUrlService.getUrl().subscribe(data => {
       this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://data.opendatasoft.com/explore/embed/dataset/base-sirene@datanova/map/?q=' + data);
+        'https://public.opendatasoft.com/explore/embed/dataset/sirene/map/?q=' + data);
     });
   }
 
