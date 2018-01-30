@@ -14,7 +14,7 @@ export interface CompanyInterface {
     codpos: string;
     libnj: string; // Statut juridique
     dcren: Date; // Date de création
-    libtefen: string; // Effects
+    libtefet: string; // Effects
     libtca: string; // CA
     libreg_new: string;
     coordonnees: [number];
