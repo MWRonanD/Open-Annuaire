@@ -23,7 +23,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class TableFirmComponent {
   subscription: Subscription;
-  displayedColumns = ['name', 'siret', 'address', 'city'];
+  displayedColumns = ['name', 'siret', 'address', 'dcren', 'libnj', 'tca', 'tefet', 'apet700'];
   dataSource: TableDataSource | null;
   pageSize = 10;
   pageSizeOptions = [10, 15, 20];

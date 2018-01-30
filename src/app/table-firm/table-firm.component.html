@@ -10,14 +10,36 @@
       <mat-cell *matCellDef="let element">{{ element.fields.siret }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="address">
-      <mat-header-cell *matHeaderCellDef>Adresse</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.fields.l4_normalisee }}</mat-cell>
+    <ng-container matColumnDef="apet700">
+      <mat-header-cell *matHeaderCellDef>Activité</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.fields.apet700 }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="city">
-      <mat-header-cell *matHeaderCellDef>Ville</mat-header-cell>
-      <mat-cell *matCellDef="let element">{{ element.fields.libcom }}</mat-cell>
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef>Adresse</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.fields.l4_normalisee ? element.fields.l4_normalisee + ',': '' }}
+        {{ element.fields.codpos }} {{ element.fields.libcom }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dcren">
+      <mat-header-cell *matHeaderCellDef>Date de création</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.fields.dcren | date:'dd/MM/yyyy' }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="libnj">
+      <mat-header-cell *matHeaderCellDef>Statut juridique</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.fields.libnj }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tca">
+      <mat-header-cell *matHeaderCellDef>Chiffre d'affaires</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.fields.libtca }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tefet">
+      <mat-header-cell *matHeaderCellDef>Effectifs</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.fields.libtefen }}</mat-cell>
     </ng-container>
 
     <mat-header-row  *matHeaderRowDef="displayedColumns" ></mat-header-row>
