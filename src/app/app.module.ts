@@ -66,6 +66,7 @@ registerLocaleData(localeFr, 'fr');
     LoadingBarHttpClientModule,
     LoadingBarHttpModule,
     LoadingBarRouterModule,
+    MatTooltipModule,
 
   ],
   providers: [SendUrlService,

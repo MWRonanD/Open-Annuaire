@@ -62,10 +62,10 @@ export class AppComponent implements OnInit {
       this.countResult = data.nhits;
       this.numberCompanies = data.nhits;
     });
+  }
 
-    changeLogoFocus() {
-      this.logoFocus = !this.logoFocus;
-    }
+  changeLogoFocus() {
+    this.logoFocus = !this.logoFocus;
   }
 
 }
