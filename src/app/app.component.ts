@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   countResult: number;
   filters = new Filters();
   searchString: string;
+  logoFocus = false;
 
 
   constructor(private  sendUrlService: SendUrlService, router: Router, private firmApiService: FirmApiService) {
@@ -61,6 +62,10 @@ export class AppComponent implements OnInit {
       this.countResult = data.nhits;
       this.numberCompanies = data.nhits;
     });
+
+    changeLogoFocus() {
+      this.logoFocus = !this.logoFocus;
+    }
   }
 
 }

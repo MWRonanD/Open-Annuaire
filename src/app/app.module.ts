@@ -10,7 +10,7 @@ import {
   MatSortModule,
   MatPaginatorModule,
   MatSelectModule, MatMenuModule, MatToolbarModule, MatSidenavModule, MatListModule, MatTabsModule, MatCardModule, MatCheckboxModule,
-  MatProgressSpinnerModule, MatProgressBarModule, MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE, MatIconModule
+  MatProgressSpinnerModule, MatProgressBarModule, MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE, MatIconModule, MatTooltipModule
 } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
 

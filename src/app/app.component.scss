@@ -103,6 +103,24 @@ p {
     height: 20px;
     margin-top: 20px;
   }
+
+  h6 {
+    color: gray;
+    font-size: 13px;
+    @mixin md-icon-size($size: 10px) {
+      font-size: $size;
+      height: $size;
+      width: $size;
+    }
+
+    .mat-icon {
+      @include md-icon-size(16px);
+    }
+  }
+  .logo-focus {
+    outline: none !important;
+    box-shadow: 0 0 10px #719ECE;
+  }
 }
 
 
