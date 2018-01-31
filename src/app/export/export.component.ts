@@ -21,14 +21,13 @@ export class ExportComponent {
   companies: Company[];
   filename = 'Export';
   companiesNumber: number;
-
+  params = '';
 
   constructor(private sendUrlService: SendUrlService, private firmApiService: FirmApiService) {
     this.subscription = sendUrlService.getUrl().subscribe(data => {
-      firmApiService.searchCompanies(data, -1).subscribe((dataCompanies) => {
-        this.companies = firmApiService.convertDataToCompanies(dataCompanies);
-        console.log(this.companies);
-        this.companiesNumber = this.companies.length;
+      this.params = data;
+      firmApiService.searchCompanies(this.params, 0).subscribe((dataCompanies) => {
+        this.companiesNumber = dataCompanies.nhits;
       });
     });
   }
@@ -53,26 +52,34 @@ export class ExportComponent {
       fieldSeparator: ';',
       headers: head
     };
-
-    new Angular2Csv(this.companies, 'exportCsv', options);
+    this.firmApiService.searchCompanies(this.params, -1).subscribe((dataCompanies) => {
+      this.companies = this.firmApiService.convertDataToCompanies(dataCompanies);
+      return new Angular2Csv(this.companies, 'exportCsv', options);
+    });
   }
 
 
   exportExcel() {
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.companies);
-    const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
-    const excelBuffer: any = XLSX.write(workbook, {bookType: 'xlsx', type: 'buffer'});
-    const data: Blob = new Blob([excelBuffer], {
-      type: EXCEL_HTA,
+    this.firmApiService.searchCompanies(this.params, -1).subscribe((dataCompanies) => {
+      this.companies = this.firmApiService.convertDataToCompanies(dataCompanies);
+      const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.companies);
+      const workbook: XLSX.WorkBook = {Sheets: {'data': worksheet}, SheetNames: ['data']};
+      const excelBuffer: any = XLSX.write(workbook, {bookType: 'xlsx', type: 'buffer'});
+      const data: Blob = new Blob([excelBuffer], {
+        type: EXCEL_HTA,
+      });
+      FileSaver.saveAs(data, this.filename + '.xlsx');
     });
-    FileSaver.saveAs(data, this.filename + '.xlsx');
   }
 
   exportJson() {
-    const data: Blob = new Blob([JSON.stringify(this.companies)], {
-      type: JSON_HTA,
+    this.firmApiService.searchCompanies(this.params, -1).subscribe((dataCompanies) => {
+      this.companies = this.firmApiService.convertDataToCompanies(dataCompanies);
+      const data: Blob = new Blob([JSON.stringify(this.companies)], {
+        type: JSON_HTA,
+      });
+      FileSaver.saveAs(data, this.filename + '.json');
     });
-    FileSaver.saveAs(data, this.filename + '.json');
   }
 
 
