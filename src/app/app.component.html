@@ -1,7 +1,10 @@
 <mat-toolbar class="example-header" >
-  <div class="row">
-    <img (click)="sidenav.toggle()" class="logo" src='assets/logo.png'>
-  <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)" [searchString]="searchString"></app-search-box>
+  <div class="row align-items-center">
+    <img #websiteLogo (click)="sidenav.toggle()" [class]="logoFocus? 'logo logo-focus': 'logo'" src='assets/logo.png'>
+    <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)" [searchString]="searchString"></app-search-box>
+    <div matTooltip="Cliquez sur le logo du site pour afficher ou cacher le menu" (mouseover)="changeLogoFocus()" (mouseout)="changeLogoFocus()">
+      <h6><mat-icon>help</mat-icon>Aide</h6>
+    </div>
   </div>
 </mat-toolbar>
 <mat-toolbar class="example-header2" fxLayout="row">
@@ -17,7 +20,7 @@
 
 <mat-sidenav-container class="example-container mat-elevation-z16">
   <mat-sidenav #sidenav [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'" opened="true"
-               class="example-sidenav"
+               class="example-sidenav mat-elevation-z1"
                [fixedInViewport]="false">
     <div fxLayout="column" fxFlex>
       <div class="result" fxFlex>
