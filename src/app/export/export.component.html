@@ -2,21 +2,21 @@
 <div class="row">
   <div class="col-xs-12 width">CSV</div>
   <ul>
-    <li class="col-xs-12"><a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=csv&timezone=Europe/Berlin&use_labels_for_header=true"><i class="material-icons">archive</i>Jeu de données entier</a></li>
+    <li class="col-xs-12"><a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/sirene@public/download/?format=csv&timezone=Europe/Berlin&use_labels_for_header=true"><i class="material-icons">archive</i>Jeu de données entier</a></li>
     <li  (click)="exportCsv()" class="col-xs-12"><i class="material-icons">archive</i>Seulement les {{(companiesNumber > 10000) ? '10 000 premiers' : companiesNumber | number:'':'fr'}} enregistrements sélectionnés</li>
   </ul>
 </div>
 <div class="row">
   <div class="col-xs-12 width">JSON</div>
   <ul>
-    <li class="col-xs-12"><a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=json&timezone=Europe/Berlin&use_labels_for_header=true"><i class="material-icons">archive</i>Jeu de données entier</a></li>
+    <li class="col-xs-12"><a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/sirene@public/download/?format=json&timezone=Europe/Berlin&use_labels_for_header=true"><i class="material-icons">archive</i>Jeu de données entier</a></li>
     <li  (click)="exportJson()" class="col-xs-12"><i class="material-icons">archive</i>Seulement les {{(companiesNumber > 10000) ? '10 000 premiers' : companiesNumber | number:'':'fr'}} enregistrements sélectionnés</li>
   </ul>
 </div>
 <div class="row">
   <div class="col-xs-12 width">EXCEL</div>
   <ul>
-    <li class="col-xs-12"><a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/base-sirene@datanova/download/?format=xls&timezone=Europe/Berlin&use_labels_for_header=true"><i class="material-icons">archive</i>Jeu de données entier</a></li>
+    <li class="col-xs-12"><a rel="nofollow" href="https://data.opendatasoft.com/explore/dataset/sirene@public/download/?format=xls&timezone=Europe/Berlin&use_labels_for_header=true"><i class="material-icons">archive</i>Jeu de données entier</a></li>
     <li  (click)="exportExcel()" class="col-xs-12"><i class="material-icons">archive</i>Seulement les {{(companiesNumber > 10000) ? '10 000 premiers' : companiesNumber | number:'':'fr'}} enregistrements sélectionnés</li>
   </ul>
 </div>
