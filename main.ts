@@ -17,15 +17,33 @@ function createWindow() {
 
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
-
+  let tmpX = size.width - 1600;
+  if (tmpX <= 0)
+  {
+    tmpX = 0;
+  }
+  else
+  {
+    tmpX /= 2;
+  }
+  let tmpY = size.height - 900;
+  if (tmpY <= 0)
+  {
+    tmpY = 0;
+  }
+  else
+  {
+    tmpY /= 2;
+  }
   // Create the browser window.
   win = new BrowserWindow({
-    x: 0,
-    y: 0,
-    width: size.width,
-    height: size.height
+    x: tmpX ,
+    y: tmpY ,
+    width: 1600,
+    height: 900,
+    icon: path.join(__dirname, 'icon.ico')
   });
-Menu.setApplicationMenu(null);
+  // Menu.setApplicationMenu(null);
   if (serve) {
     require('electron-reload')(__dirname, {
      electron: require(`${__dirname}/node_modules/electron`)});
@@ -38,7 +56,7 @@ Menu.setApplicationMenu(null);
     }));
   }
 
-  win.webContents.openDevTools();
+ // win.webContents.openDevTools();
 
   // Emitted when the window is closed.
   win.on('closed', () => {
