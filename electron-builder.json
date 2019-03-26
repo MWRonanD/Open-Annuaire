@@ -1,5 +1,5 @@
 {
-  "productName": "angular-electron",
+  "productName": "Open-electron",
   "directories": {
     "output": "app-builds"
   },
@@ -20,19 +20,19 @@
         "!tslint.json"
     ],
   "win": {
-    "icon": "dist",
+    "icon": "dist/assets/icon.ico",
     "target": [
       "portable"
     ]
   },
   "mac": {
-    "icon": "dist",
+    "icon": "dist/assets",
     "target": [
       "dmg"
     ]
   },
   "linux": {
-    "icon": "dist",
+    "icon": "dist/assets",
     "target": [
       "AppImage"
     ]

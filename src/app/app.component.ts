@@ -3,6 +3,7 @@ import {Filter, Filters} from './Model/Filter';
 import {SendUrlService} from './send-url.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {FirmApiService} from './firm-api.service';
+import {ElectronService} from './providers/electron.service';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
   logoFocus = false;
 
 
-  constructor(private  sendUrlService: SendUrlService, router: Router, private firmApiService: FirmApiService) {
+  constructor(private  sendUrlService: SendUrlService, router: Router, private firmApiService: FirmApiService, public electronService: ElectronService) {
     // set screenWidth on page load
     this.screenWidth = window.innerWidth;
     window.onresize = () => {

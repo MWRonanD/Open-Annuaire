@@ -9,5 +9,8 @@ if (CONF_PROD.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic()
+.bootstrapModule(AppModule, {
+   preserveWhitespaces: false
+  })
   .catch(err => console.log(err));

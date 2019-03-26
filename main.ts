@@ -41,7 +41,7 @@ function createWindow() {
     y: tmpY ,
     width: 1600,
     height: 900,
-    icon: path.join(__dirname, 'icon.ico')
+    icon: path.join(__dirname, 'favicon.ico')
   });
   // Menu.setApplicationMenu(null);
   if (serve) {

@@ -27,6 +27,8 @@ import localeFr from '@angular/common/locales/fr';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarHttpModule } from '@ngx-loading-bar/http';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { ElectronService } from './providers/electron.service';
+import { WebviewDirective } from './directives/webview.directive';
 
 registerLocaleData(localeFr, 'fr');
 @NgModule({
@@ -37,6 +39,7 @@ registerLocaleData(localeFr, 'fr');
     SearchBoxComponent,
     MapsComponent,
     ExportComponent,
+    WebviewDirective
   ],
   imports: [
     FlexLayoutModule,
@@ -67,10 +70,10 @@ registerLocaleData(localeFr, 'fr');
     LoadingBarHttpModule,
     LoadingBarRouterModule,
     MatTooltipModule,
-
   ],
   providers: [SendUrlService,
-    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+    ElectronService
   ],
   bootstrap: [AppComponent]
 })
