@@ -28,7 +28,7 @@ Run `npm start` for a dev server. The app will automatically reload if you chang
 
 **Your application is optimised. Only /dist folder and node dependencies are included in the executable.**
 
-##Original projects 
-[Angular] (https://github.com/MWAlexisL/Open-Annuaire)
+## Original projects 
+[Angular](https://github.com/MWAlexisL/Open-Annuaire)
 
-[Electron] (https://github.com/maximegris/angular-electron) 
+[Electron](https://github.com/maximegris/angular-electron) 
