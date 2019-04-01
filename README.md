@@ -6,7 +6,7 @@ A [Web demo](https://mwalexisl.github.io/Open-Annuaire) is available.
 
 ## Installation
 
-- Clone the project `git clone git@github.com:MWAlexisL/Open-Annuaire.git`
+- Clone the project `git https://github.com/MWRonanD/Open-Annuaire.git`
 - Go to the new directory `cd Open-Annuaire/`
 - Install the packages `npm install`
 
