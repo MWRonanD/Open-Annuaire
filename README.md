@@ -2,7 +2,7 @@
 
 Project with Electron-Angular calling an API 
 
-A [Demo](https://mwalexisl.github.io/Open-Annuaire) is available.
+A [Web demo](https://mwalexisl.github.io/Open-Annuaire) is available.
 
 ## Installation
 
