@@ -1,4 +1,4 @@
-# OpenAnnuaire
+# Open Annuaire Electron
 
 Project with Electron-Angular calling an API 
 
