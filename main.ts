@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen, Menu } from 'electron';
+import { app, BrowserWindow, screen, Menu, dialog, autoUpdater} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -57,7 +57,7 @@ function createWindow() {
   }
 
  // win.webContents.openDevTools();
-
+ dialog.showMessageBox({'message': 'OMG such new killer feature!!'});
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -67,6 +67,57 @@ function createWindow() {
   });
 }
 
+// #region Auto update
+const squirrelUrl = 'http://localhost/Installer/';
+
+const startAutoUpdater = (squirrelUrl) => {
+  // The Squirrel application will watch the provided URL
+  autoUpdater.setFeedURL(`${squirrelUrl}/win64/`);
+
+  // Display a success message on successful update
+  autoUpdater.addListener('update-downloaded', (event, releaseNotes, releaseName) => {
+    dialog.showMessageBox({'message': `The release ${releaseName} has been downloaded`});
+  });
+
+  // Display an error message on update error
+  autoUpdater.addListener('error', (error) => {
+    dialog.showMessageBox({'message': 'Auto updater error: ' + error});
+  });
+
+  // tell squirrel to check for updates
+  autoUpdater.checkForUpdates();
+};
+
+app.on('ready', function (){
+  // Add this condition to avoid error when running your application locally
+  if (process.env.NODE_ENV !== 'dev') { startAutoUpdater(squirrelUrl); }
+});
+// #endregion Auto update
+// #region Squirrel (Auto-update)
+const handleSquirrelEvent = () => {
+  if (process.argv.length === 1) {
+    return false;
+  }
+
+  const squirrelEvent = process.argv[1];
+  switch (squirrelEvent) {
+    case '--squirrel-install':
+    case '--squirrel-updated':
+    case '--squirrel-uninstall':
+      setTimeout(app.quit, 1000);
+      dialog.showMessageBox({'message': 'Hello world'});
+      return true;
+
+    case '--squirrel-obsolete':
+      app.quit();
+      return true;
+  }
+};
+
+if (handleSquirrelEvent()) {
+  // squirrel event handled and app will exit in 1000ms, so don't do anything else
+}
+// #endregion Squirrel (Auto-update)
 try {
 
   // This method will be called when Electron has finished
