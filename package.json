@@ -1,9 +1,9 @@
 {
   "name": "OpenAnnuaire",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "Hello world",
   "homepage": "",
-  "licence":"MIT",
+  "licence": "MIT",
   "author": {
     "name": "",
     "email": ""
