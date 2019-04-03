@@ -6,6 +6,7 @@ let win, serve;
 
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+const squirrelUrl = 'http://localhost/Installer/';
 
 try {
   require('dotenv').config();
@@ -55,10 +56,9 @@ function createWindow() {
       slashes: true
     }));
   }
+  dialog.showMessageBox({'message': `stp soit une killer feature !`});
 
  // win.webContents.openDevTools();
- dialog.showMessageBox({'message': 'OMG such new killer feature!!'});
- dialog.showMessageBox({'message': 'OMG such new fucking killer feature 2!!'});
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -67,13 +67,59 @@ function createWindow() {
     win = null;
   });
 }
+function startAutoUpdater() {
+  // The Squirrel application will watch the provided URL
+  autoUpdater.setFeedURL(`${squirrelUrl}/win64/`);
+
+  // Display a success message on successful update
+  autoUpdater.addListener('update-downloaded', (event, releaseNotes, releaseName) => {
+    dialog.showMessageBox({'message': `The release ${releaseName} has been downloaded`});
+  });
+
+  // Display an error message on update error
+  autoUpdater.addListener('error', (error) => {
+    dialog.showMessageBox({'message': 'Auto updater error: ' + error});
+  });
+
+  // tell squirrel to check for updates
+  autoUpdater.checkForUpdates();
+}
+
+function handleSquirrelEvent() {
+  if (process.argv.length === 1) {
+    return false;
+  }
+
+  const squirrelEvent = process.argv[1];
+  switch (squirrelEvent) {
+    case '--squirrel-install':
+    case '--squirrel-updated':
+    case '--squirrel-uninstall':
+      setTimeout(app.quit, 1000);
+      dialog.showMessageBox({'message': 'Hello world'});
+      return true;
+
+    case '--squirrel-obsolete':
+      app.quit();
+      return true;
+  }
+}
 
 try {
 
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  app.on('ready', createWindow);
+  app.on('ready', x =>  {
+    createWindow();
+    if (process.env.NODE_ENV !== 'dev') {
+      startAutoUpdater();
+    }
+    if (handleSquirrelEvent()) {
+      // squirrel event handled and app will exit in 1000ms, so don't do anything else
+      return;
+    }
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
@@ -95,54 +141,3 @@ try {
   // Catch Error
   // throw e;
 }
-// #region Auto update
-const squirrelUrl = 'http://localhost/Installer/';
-
-const startAutoUpdater = (squirrelUrl) => {
-  // The Squirrel application will watch the provided URL
-  autoUpdater.setFeedURL(`${squirrelUrl}/win64/`);
-
-  // Display a success message on successful update
-  autoUpdater.addListener('update-downloaded', (event, releaseNotes, releaseName) => {
-    dialog.showMessageBox({'message': `The release ${releaseName} has been downloaded`});
-  });
-
-  // Display an error message on update error
-  autoUpdater.addListener('error', (error) => {
-    dialog.showMessageBox({'message': 'Auto updater error: ' + error});
-  });
-
-  // tell squirrel to check for updates
-  autoUpdater.checkForUpdates();
-};
-
-app.on('ready', function (){
-  // Add this condition to avoid error when running your application locally
-  if (process.env.NODE_ENV !== 'dev') { startAutoUpdater(squirrelUrl); }
-});
-// #endregion Auto update
-// #region Squirrel (Auto-update)
-const handleSquirrelEvent = () => {
-  if (process.argv.length === 1) {
-    return false;
-  }
-
-  const squirrelEvent = process.argv[1];
-  switch (squirrelEvent) {
-    case '--squirrel-install':
-    case '--squirrel-updated':
-    case '--squirrel-uninstall':
-      setTimeout(app.quit, 1000);
-      dialog.showMessageBox({'message': 'Hello world'});
-      return true;
-
-    case '--squirrel-obsolete':
-      app.quit();
-      return true;
-  }
-};
-
-if (handleSquirrelEvent()) {
-  // squirrel event handled and app will exit in 1000ms, so don't do anything else
-}
-// #endregion Squirrel (Auto-update)
