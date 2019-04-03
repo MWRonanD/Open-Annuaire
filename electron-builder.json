@@ -22,7 +22,7 @@
   "win": {
     "icon": "dist/assets/icon.ico",
     "target": [
-      "portable"
+      "squirrel"
     ]
   },
   "mac": {

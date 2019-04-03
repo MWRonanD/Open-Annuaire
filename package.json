@@ -2,11 +2,11 @@
   "name": "OpenAnnuaire",
   "version": "3.4.2",
   "description": "Hello world",
-  "homepage": "",
+  "homepage": "Home.fr",
   "licence": "MIT",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Ronan",
+    "email": "Mail@mail.fr"
   },
   "keywords": [
     "angular",
@@ -68,6 +68,7 @@
     "dotenv": "5.0.1",
     "electron": "1.8.4",
     "electron-builder": "^20.39.0",
+    "electron-builder-squirrel-windows": "^20.39.0",
     "electron-packager": "^13.1.1",
     "electron-reload": "^1.4.0",
     "electron-winstaller": "^3.0.4",
