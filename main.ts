@@ -56,8 +56,6 @@ function createWindow() {
       slashes: true
     }));
   }
-  dialog.showMessageBox({'message': `stp soit une killer feature !`});
-
  // win.webContents.openDevTools();
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -96,7 +94,6 @@ function handleSquirrelEvent() {
     case '--squirrel-updated':
     case '--squirrel-uninstall':
       setTimeout(app.quit, 1000);
-      dialog.showMessageBox({'message': 'Hello world'});
       return true;
 
     case '--squirrel-obsolete':
