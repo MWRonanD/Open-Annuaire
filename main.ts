@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen, Menu } from 'electron';
+import { app, BrowserWindow, screen, Menu, dialog, autoUpdater} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -6,6 +6,7 @@ let win, serve;
 
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
+const squirrelUrl = 'http://localhost/Installer/';
 
 try {
   require('dotenv').config();
@@ -55,9 +56,7 @@ function createWindow() {
       slashes: true
     }));
   }
-
  // win.webContents.openDevTools();
-
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -66,13 +65,58 @@ function createWindow() {
     win = null;
   });
 }
+function startAutoUpdater() {
+  // The Squirrel application will watch the provided URL
+  autoUpdater.setFeedURL(`${squirrelUrl}/win64/`);
+
+  // Display a success message on successful update
+  autoUpdater.addListener('update-downloaded', (event, releaseNotes, releaseName) => {
+    dialog.showMessageBox({'message': `The release ${releaseName} has been downloaded`});
+  });
+
+  // Display an error message on update error
+  autoUpdater.addListener('error', (error) => {
+    dialog.showMessageBox({'message': 'Auto updater error: ' + error});
+  });
+
+  // tell squirrel to check for updates
+  autoUpdater.checkForUpdates();
+}
+
+function handleSquirrelEvent() {
+  if (process.argv.length === 1) {
+    return false;
+  }
+
+  const squirrelEvent = process.argv[1];
+  switch (squirrelEvent) {
+    case '--squirrel-install':
+    case '--squirrel-updated':
+    case '--squirrel-uninstall':
+      setTimeout(app.quit, 1000);
+      return true;
+
+    case '--squirrel-obsolete':
+      app.quit();
+      return true;
+  }
+}
 
 try {
 
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  app.on('ready', createWindow);
+  app.on('ready', x =>  {
+    createWindow();
+    if (process.env.NODE_ENV !== 'dev') {
+      startAutoUpdater();
+    }
+    if (handleSquirrelEvent()) {
+      // squirrel event handled and app will exit in 1000ms, so don't do anything else
+      return;
+    }
+  });
 
   // Quit when all windows are closed.
   app.on('window-all-closed', () => {
@@ -90,7 +134,6 @@ try {
       createWindow();
     }
   });
-
 } catch (e) {
   // Catch Error
   // throw e;

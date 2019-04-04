@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   filters = new Filters();
   searchString: string;
   logoFocus = false;
-
+  version = '3.4.4';
 
   constructor(private  sendUrlService: SendUrlService, router: Router, private firmApiService: FirmApiService, public electronService: ElectronService) {
     // set screenWidth on page load

@@ -1,10 +1,11 @@
 <mat-toolbar class="example-header" >
-  <div class="row align-items-center">
+  <div class="row align-items-center inline-div">
     <img #websiteLogo (click)="sidenav.toggle()" [class]="logoFocus? 'logo logo-focus': 'logo'" src='assets/logo.png'>
     <app-search-box (onSearchCompanyBy)="searchCompanyBy($event)" [searchString]="searchString"></app-search-box>
-    <div matTooltip="Cliquez sur le logo du site pour afficher ou cacher le menu" (mouseover)="changeLogoFocus()" (mouseout)="changeLogoFocus()">
+    <div matTooltip="Cliquez sur le logo du site pour afficher ou cacher le menu - Version : {{version}}" (mouseover)="changeLogoFocus()" (mouseout)="changeLogoFocus()">
       <h6><mat-icon>help</mat-icon>Aide</h6>
     </div>
+    <p class="version"></p>
   </div>
 </mat-toolbar>
 <mat-toolbar class="example-header2" fxLayout="row">
