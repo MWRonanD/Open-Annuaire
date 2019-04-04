@@ -28,7 +28,20 @@ Run `npm start` for a dev server. The app will automatically reload if you chang
 
 **Your application is optimised. Only /dist folder and node dependencies are included in the executable.**
 
-## Original projects 
+## Auto update 
+- Build solutions :  `npm run electron:windows`
+- install build
+- Start app(`C:/Users/[USER_NAME]/AppData/Local/OpenAnnuaire/Open-electron.exe`)
+- make a new version (increment app version in `app.component.ts` & run `npm version patch`)
+- Build solutions :  `npm run electron:windows`
+- Get compiled files in `Open-Annuaire/app-builds/squirrel-windows`
+- Put it in web server (in this case i create a wamp server in local `localhost/Installer/win64/`)
+- Start app, wait a few seconds
+- Restart app
+
+## Sources
 [Angular](https://github.com/MWAlexisL/Open-Annuaire)
 
 [Electron](https://github.com/maximegris/angular-electron) 
+
+[Squirrel](https://blog.theodo.fr/2017/05/set-up-continuous-deployment-on-electron-using-squirrel/)
