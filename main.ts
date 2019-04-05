@@ -1,13 +1,12 @@
 import { app, BrowserWindow, screen, Menu, dialog, autoUpdater} from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-
+import * as squirrelBuilder from 'electron-builder-squirrel-windows';
 let win, serve;
 
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
 const squirrelUrl = 'http://localhost/Installer/';
-
 try {
   require('dotenv').config();
 } catch {
