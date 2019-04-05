@@ -4,6 +4,7 @@ import {SendUrlService} from './send-url.service';
 import {NavigationEnd, Router} from '@angular/router';
 import {FirmApiService} from './firm-api.service';
 import {ElectronService} from './providers/electron.service';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit {
   filters = new Filters();
   searchString: string;
   logoFocus = false;
-  version = '3.4.4';
+  version = environment.VERSION;
 
   constructor(private  sendUrlService: SendUrlService, router: Router, private firmApiService: FirmApiService, public electronService: ElectronService) {
     // set screenWidth on page load
