@@ -1,8 +1,7 @@
 {
   "name": "OpenAnnuaire",
-  "version": "3.4.7",
+  "version": "0.0.1",
   "description": "Hello world",
-  "homepage": "Home.fr",
   "licence": "MIT",
   "author": {
     "name": "Ronan",
