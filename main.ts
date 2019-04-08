@@ -1,4 +1,4 @@
-import { app, BrowserWindow, screen, Menu, dialog, autoUpdater} from 'electron';
+import { app, BrowserWindow, screen, Menu, dialog, autoUpdater } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
 
@@ -19,27 +19,23 @@ function createWindow() {
   const electronScreen = screen;
   const size = electronScreen.getPrimaryDisplay().workAreaSize;
   let tmpX = size.width - 1600;
-  if (tmpX <= 0)
-  {
+  if (tmpX <= 0) {
     tmpX = 0;
   }
-  else
-  {
+  else {
     tmpX /= 2;
   }
   let tmpY = size.height - 900;
-  if (tmpY <= 0)
-  {
+  if (tmpY <= 0) {
     tmpY = 0;
   }
-  else
-  {
+  else {
     tmpY /= 2;
   }
   // Create the browser window.
   win = new BrowserWindow({
-    x: tmpX ,
-    y: tmpY ,
+    x: tmpX,
+    y: tmpY,
     width: 1600,
     height: 900,
     icon: path.join(__dirname, 'favicon.ico')
@@ -47,7 +43,8 @@ function createWindow() {
   // Menu.setApplicationMenu(null);
   if (serve) {
     require('electron-reload')(__dirname, {
-     electron: require(`${__dirname}/node_modules/electron`)});
+      electron: require(`${__dirname}/node_modules/electron`)
+    });
     win.loadURL('http://localhost:4200');
   } else {
     win.loadURL(url.format({
@@ -56,7 +53,7 @@ function createWindow() {
       slashes: true
     }));
   }
- // win.webContents.openDevTools();
+  // win.webContents.openDevTools();
   // Emitted when the window is closed.
   win.on('closed', () => {
     // Dereference the window object, usually you would store window
@@ -71,12 +68,12 @@ function startAutoUpdater() {
 
   // Display a success message on successful update
   autoUpdater.addListener('update-downloaded', (event, releaseNotes, releaseName) => {
-    dialog.showMessageBox({'message': `The release ${releaseName} has been downloaded`});
+    dialog.showMessageBox({ 'message': `The release ${releaseName} has been downloaded` });
   });
 
   // Display an error message on update error
   autoUpdater.addListener('error', (error) => {
-    dialog.showMessageBox({'message': 'Auto updater error: ' + error});
+    dialog.showMessageBox({ 'message': 'Auto updater error: ' + error });
   });
 
   // tell squirrel to check for updates
@@ -107,7 +104,7 @@ try {
   // This method will be called when Electron has finished
   // initialization and is ready to create browser windows.
   // Some APIs can only be used after this event occurs.
-  app.on('ready', x =>  {
+  app.on('ready', x => {
     createWindow();
     if (process.env.NODE_ENV !== 'dev') {
       startAutoUpdater();
