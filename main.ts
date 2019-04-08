@@ -1,7 +1,15 @@
 import { app, BrowserWindow, screen, Menu, dialog, autoUpdater } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import * as ChildProcess from 'child_process';
 let win, serve;
+
+//#region Paths
+const appFolder = path.resolve(process.execPath, '..');
+const rootAtomFolder = path.resolve(appFolder, '..');
+const updateDotExe = path.resolve(path.join(rootAtomFolder, 'Update.exe'));
+const exeName = path.basename(process.execPath);
+//#endregion Paths
 
 const args = process.argv.slice(1);
 serve = args.some(val => val === '--serve');
@@ -11,7 +19,18 @@ try {
 } catch {
   console.log('asar');
 }
+function spawn(command: string, args: string[]) {
+  let spawnedProcess, error;
 
+  try {
+    spawnedProcess = ChildProcess.spawn(command, args, { detached: true });
+  } catch (error) { }
+
+  return spawnedProcess;
+}
+function spawnUpdate(args: string[]) {
+  return spawn(updateDotExe, args);
+}
 function createWindow() {
 
   const electronScreen = screen;
@@ -77,7 +96,6 @@ function startAutoUpdater() {
   // tell squirrel to check for updates
   autoUpdater.checkForUpdates();
 }
-
 function handleSquirrelEvent() {
   if (process.argv.length === 1) {
     return false;
@@ -87,6 +105,16 @@ function handleSquirrelEvent() {
   switch (squirrelEvent) {
     case '--squirrel-install':
     case '--squirrel-updated':
+      // Optionally do things such as:
+      // - Add your .exe to the PATH
+      // - Write to the registry for things like file associations and
+      //   explorer context menus
+
+      // Install desktop and start menu shortcuts
+      spawnUpdate(['--createShortcut', exeName]);
+
+      setTimeout(app.quit, 1000);
+      return true;
     case '--squirrel-uninstall':
       setTimeout(app.quit, 1000);
       return true;
